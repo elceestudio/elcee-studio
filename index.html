@@ -535,6 +535,53 @@ html.prm .flow .dot{transform:scale(1)}
 .gitem .glabel{position:absolute;left:10px;bottom:10px;font-size:9px;letter-spacing:.28em;font-weight:700;color:var(--crema);background:rgba(10,10,10,.74);padding:6px 9px;text-transform:uppercase}
 html.prm .gal-row{animation:none}
 html.prm .gal{overflow-x:auto}
+
+/* ============================================================
+   REV.03 — EXPO DE PORTADA · GALERÍA XL · PICTOGRAMAS · OBRA
+   ============================================================ */
+/* Expo de portada (exhibición del sitio anterior, fusionada) */
+.hero-expo{position:absolute;inset:0;z-index:0;overflow:hidden;background:var(--negro)}
+.hero-expo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;
+  transform:scale(1.07);transition:opacity 1.15s var(--ease),transform 5.4s linear;
+  filter:grayscale(.18) contrast(1.03)}
+.hero-expo img.on{opacity:1;transform:scale(1)}
+.hero-expo::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(90deg,rgba(10,10,10,.95) 0%,rgba(10,10,10,.74) 42%,rgba(10,10,10,.24) 100%),
+  linear-gradient(0deg,rgba(10,10,10,.9) 0%,rgba(10,10,10,0) 32%),
+  linear-gradient(180deg,rgba(10,10,10,.62) 0%,rgba(10,10,10,0) 24%)}
+html.prm .hero-expo img{transition:none;transform:none}
+.hx-link{display:flex;flex-direction:column;align-items:flex-end;gap:5px;text-decoration:none;text-align:right}
+.hx-link .hx-n{font-size:9px;letter-spacing:.3em;font-weight:700;color:var(--mut-d)}
+.hx-link .hx-t{font-size:12px;letter-spacing:.24em;font-weight:700;color:var(--crema);transition:color .3s}
+.hx-link .hx-go{font-size:9px;letter-spacing:.3em;font-weight:700;color:var(--rojo)}
+.hx-link:hover .hx-t{color:var(--rojo)}
+
+/* Galería XL + clic al proyecto */
+.gitem{cursor:pointer}
+.gitem img{height:clamp(250px,32vh,330px)}
+.gitem:hover .glabel{color:var(--rojo)}
+.gal:hover .gal-a,.gal:hover .gal-b{animation-play-state:paused}
+@media (max-width:760px){.gitem img{height:200px}}
+
+/* Pictogramas de proyecto (diagrama tipo concepto) */
+.proj-ico{margin:2px 0 20px}
+.proj-ico svg{width:78px;height:78px;display:block;stroke:var(--crema);stroke-width:1.6;fill:none;opacity:.94}
+.proj-ico .ac{stroke:var(--rojo)}
+.proj-ico .acf{fill:var(--rojo);stroke:none}
+
+/* Obra · proceso constructivo */
+.obra{padding-top:clamp(80px,14vh,150px);padding-bottom:clamp(80px,14vh,150px)}
+.obra-p{max-width:52ch;color:var(--mut-d);font-size:clamp(.95rem,1.4vw,1.1rem);line-height:1.7;margin-top:clamp(20px,3.5vh,34px)}
+.obra-seq{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,28px);margin-top:clamp(30px,5.5vh,56px)}
+.obra-step{position:relative;cursor:pointer;border:1px solid var(--line-d);background:var(--negro-2);overflow:hidden;margin:0}
+.obra-step img{width:100%;height:auto;display:block;filter:grayscale(.4) contrast(1.02);transition:filter .5s var(--ease),transform .8s var(--ease)}
+.obra-step:hover img{filter:none;transform:scale(1.025)}
+.os-tag{position:absolute;top:12px;left:14px;font-size:9px;letter-spacing:.3em;font-weight:700;color:var(--crema);background:rgba(10,10,10,.78);padding:6px 10px}
+.os-tag .os-num{color:var(--rojo);margin-right:6px}
+.os-arrow{position:absolute;bottom:12px;right:14px;font-size:11px;font-weight:700;color:var(--crema);background:rgba(10,10,10,.78);padding:6px 10px;opacity:0;transition:opacity .35s}
+.obra-step:hover .os-arrow{opacity:1}
+.obra-foot{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-top:clamp(22px,3.5vh,34px);flex-wrap:wrap}
+@media (max-width:860px){.obra-seq{grid-template-columns:1fr}}
 @media(max-width:640px){.gitem img{height:150px}}
 
 /* ---------- Créditos ---------- */
@@ -599,7 +646,8 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
     <a class="menu-link dsp" href="#servicios"><span class="ml-i"><sup>03</sup><span class="ml-t">SERVICIOS</span></span></a>
     <a class="menu-link dsp" href="#proyectos"><span class="ml-i"><sup>04</sup><span class="ml-t">PROYECTOS</span></span></a>
     <a class="menu-link dsp" href="#metodo"><span class="ml-i"><sup>05</sup><span class="ml-t">MÉTODO</span></span></a>
-    <a class="menu-link dsp" href="#contacto"><span class="ml-i"><sup>06</sup><span class="ml-t">CONTACTO</span></span></a>
+    <a class="menu-link dsp" href="#obra"><span class="ml-i"><sup>06</sup><span class="ml-t">OBRA</span></span></a>
+    <a class="menu-link dsp" href="#contacto"><span class="ml-i"><sup>07</sup><span class="ml-t">CONTACTO</span></span></a>
   </div>
   <div class="menu-foot">
     <span class="eye">AGUASCALIENTES, MÉXICO — EST. 2026</span>
@@ -611,6 +659,18 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
 <main>
 <!-- ============ HERO ============ -->
 <section class="hero" id="inicio" data-theme="dark">
+  <div class="hero-expo">
+    <img src="img/verdal-tower.webp" alt="Verdal Tower" fetchpriority="high" decoding="async" data-proj="0" data-chip="VERDAL TOWER">
+    <img data-src="img/proyecto-petalo.webp" alt="Proyecto Pétalo" decoding="async" data-proj="1" data-chip="PROYECTO PÉTALO">
+    <img data-src="img/biblioteca-madero.webp" alt="Biblioteca Madero" decoding="async" data-proj="2" data-chip="BIBLIOTECA MADERO">
+    <img data-src="img/casa-el-pedregal.webp" alt="Casa El Pedregal" decoding="async" data-proj="3" data-chip="CASA EL PEDREGAL">
+    <img data-src="img/parc-302.webp" alt="PARC 302" decoding="async" data-proj="4" data-chip="PARC 302">
+    <img data-src="img/cfa-terrace.webp" alt="CFA Terrace" decoding="async" data-proj="5" data-chip="CFA TERRACE">
+    <img data-src="img/sena-545.webp" alt="Sena 545" decoding="async" data-proj="6" data-chip="SENA 545">
+    <img data-src="img/santa-barbara-terrace.webp" alt="Santa Barbara" decoding="async" data-proj="7" data-chip="SANTA BARBARA">
+    <img data-src="img/casa-iii-picos.webp" alt="Casa III Picos" decoding="async" data-proj="8" data-chip="CASA III PICOS">
+    <img data-src="img/casa-mv.webp" alt="Casa MV" decoding="async" data-proj="9" data-chip="CASA MV">
+  </div>
   <div class="hero-grid" aria-hidden="true"></div>
   <svg class="hero-mark" viewBox="0 0 200 200" aria-hidden="true">
     <rect x="4" y="4" width="192" height="192" rx="24" fill="none" stroke="#f5f3ee" stroke-width="1.5"/>
@@ -648,6 +708,11 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
       </div>
     </div>
     <div class="hero-meta">
+      <a class="hx-link" id="hxLink" href="#proyectos" aria-label="Ver el proyecto en portada">
+        <span class="hx-n" id="hxN">01 / 10 — EN PORTADA</span>
+        <span class="hx-t" id="hxT">VERDAL TOWER</span>
+        <span class="hx-go">VER PROYECTO ↗</span>
+      </a>
       <span class="hero-clock" id="clock">AGS · 00:00</span>
       <div class="scroll-cue"><span class="scroll-line" aria-hidden="true"></span><span class="eye">SCROLL</span></div>
     </div>
@@ -857,6 +922,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
       <div class="proj-body">
         <div class="proj-inner"><div class="proj-inner-grid">
           <div>
+            <div class="proj-ico" aria-hidden="true"><svg viewBox="0 0 72 72"><rect x="14" y="50" width="44" height="10"/><rect x="26" y="20" width="20" height="30"/><rect x="30" y="11" width="12" height="9"/><line x1="26" y1="30" x2="46" y2="30"/><line x1="26" y1="40" x2="46" y2="40"/><rect class="acf" x="26" y="50" width="20" height="3.4"/></svg></div>
             <p class="proj-desc">Torre residencial de uso mixto: comercio en zócalo, amenidades y departamentos tipo A y B. Proyecto de estudio desarrollado en la UDEM — con recorrido virtual 360° completo, del boutique al baño.</p>
             <div class="proj-dl"><div class="row"><span class="k">Ubicación</span><span class="v">Monterrey, MX</span></div><div class="row"><span class="k">Programa</span><span class="v">Retail · amenidades · vivienda</span></div><div class="row"><span class="k">Herramientas</span><span class="v">Rhino · Revit · D5 · Photoshop</span></div><div class="row"><span class="k">Crédito</span><span class="v">Académico · UDEM</span></div></div>
             <div class="proj-tags"><span class="tag">+ Uso mixto</span><span class="tag">+ Académico</span><a class="tag tag-link" href="https://kuula.co/post/n1/collection/7ZR6n" target="_blank" rel="noopener">TOUR 360° ↗</a></div>
@@ -876,6 +942,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
       <div class="proj-body">
         <div class="proj-inner"><div class="proj-inner-grid">
           <div>
+            <div class="proj-ico" aria-hidden="true"><svg viewBox="0 0 72 72"><ellipse cx="36" cy="22" rx="7" ry="13"/><ellipse cx="36" cy="22" rx="7" ry="13" transform="rotate(72 36 37)"/><ellipse cx="36" cy="22" rx="7" ry="13" transform="rotate(144 36 37)"/><ellipse cx="36" cy="22" rx="7" ry="13" transform="rotate(216 36 37)"/><ellipse cx="36" cy="22" rx="7" ry="13" transform="rotate(288 36 37)"/><circle class="acf" cx="36" cy="37" r="4"/></svg></div>
             <p class="proj-desc">Complejo urbano de uso mixto en Monterrey. Geometría pétalo que organiza plaza, comercio y torres — desarrollado con visualización asistida por IA sobre modelado paramétrico.</p>
             <div class="proj-dl"><div class="row"><span class="k">Ubicación</span><span class="v">Monterrey, MX</span></div><div class="row"><span class="k">Programa</span><span class="v">Plaza · comercio · torres</span></div><div class="row"><span class="k">Herramientas</span><span class="v">Rhino · Revit · D5 · AI Visualization</span></div><div class="row"><span class="k">Crédito</span><span class="v">Académico · UDEM</span></div></div>
             <div class="proj-tags"><span class="tag">+ Urbano</span><span class="tag">+ Uso mixto</span><span class="tag">+ Académico</span></div>
@@ -895,6 +962,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
       <div class="proj-body">
         <div class="proj-inner"><div class="proj-inner-grid">
           <div>
+            <div class="proj-ico" aria-hidden="true"><svg viewBox="0 0 72 72"><rect x="16" y="20" width="40" height="34"/><path d="M16 37 L36 20 L56 37 L36 54 Z"/><line x1="26" y1="20" x2="16" y2="28"/><line x1="46" y1="20" x2="56" y2="28"/><line x1="26" y1="54" x2="16" y2="46"/><line x1="46" y1="54" x2="56" y2="46"/><line class="ac" x1="36" y1="20" x2="36" y2="54"/></svg></div>
             <p class="proj-desc">Biblioteca cívica en desarrollo (UDEM) con exoesqueleto paramétrico como fachada estructural. Espacio público, lectura y luz controlada bajo una sola piel.</p>
             <div class="proj-dl"><div class="row"><span class="k">Ubicación</span><span class="v">Monterrey, MX</span></div><div class="row"><span class="k">Programa</span><span class="v">Biblioteca · espacio cívico</span></div><div class="row"><span class="k">Herramientas</span><span class="v">AutoCAD · Rhino · Revit · D5</span></div><div class="row"><span class="k">Crédito</span><span class="v">Académico · UDEM · en desarrollo</span></div></div>
             <div class="proj-tags"><span class="tag">+ Cívico</span><span class="tag">+ Paramétrico</span><span class="tag">+ Académico</span></div>
@@ -914,6 +982,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
       <div class="proj-body">
         <div class="proj-inner"><div class="proj-inner-grid">
           <div>
+            <div class="proj-ico" aria-hidden="true"><svg viewBox="0 0 72 72"><path d="M10 58 L28 48 L46 44 L62 42"/><rect x="28" y="28" width="30" height="8"/><rect x="20" y="38" width="30" height="8"/><line x1="24" y1="28" x2="24" y2="24"/><line class="ac" x1="42" y1="52" x2="60" y2="52"/></svg></div>
             <p class="proj-desc">Residencia de lujo en Monterrey desarrollada en MassOperations. Volúmenes de piedra y cristal sobre topografía — participación como Jr. Architect en diseño y visualización.</p>
             <div class="proj-dl"><div class="row"><span class="k">Ubicación</span><span class="v">Monterrey, MX</span></div><div class="row"><span class="k">Programa</span><span class="v">Vivienda unifamiliar</span></div><div class="row"><span class="k">Herramientas</span><span class="v">Revit · D5 · Photoshop</span></div><div class="row"><span class="k">Crédito</span><span class="v">MassOperations · Jr. Architect</span></div></div>
             <div class="proj-tags"><span class="tag">+ Residencial</span><span class="tag">+ Profesional</span></div>
@@ -933,6 +1002,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
       <div class="proj-body">
         <div class="proj-inner"><div class="proj-inner-grid">
           <div>
+            <div class="proj-ico" aria-hidden="true"><svg viewBox="0 0 72 72"><rect x="16" y="16" width="40" height="40"/><rect x="24" y="24" width="24" height="24"/><line x1="16" y1="16" x2="24" y2="24"/><line x1="56" y1="16" x2="48" y2="24"/><line x1="16" y1="56" x2="24" y2="48"/><line x1="56" y1="56" x2="48" y2="48"/><rect class="acf" x="32" y="32" width="8" height="8"/></svg></div>
             <p class="proj-desc">Complejo residencial premium en Sta. Catarina diseñado por JSA (Javier Sánchez Arq) y Manuel Cervantes Estudio. Participación como Jr. Architect vía MassOperations: documentación técnica y planos de licencia municipal.</p>
             <div class="proj-dl"><div class="row"><span class="k">Ubicación</span><span class="v">Sta. Catarina, MX</span></div><div class="row"><span class="k">Programa</span><span class="v">Vivienda multifamiliar</span></div><div class="row"><span class="k">Alcance</span><span class="v">Documentación · licencia municipal</span></div><div class="row"><span class="k">Crédito</span><span class="v">Diseño: JSA · Manuel Cervantes Estudio</span></div></div>
             <div class="proj-tags"><span class="tag">+ Residencial</span><span class="tag">+ Documentación</span></div>
@@ -952,6 +1022,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
       <div class="proj-body">
         <div class="proj-inner"><div class="proj-inner-grid">
           <div>
+            <div class="proj-ico" aria-hidden="true"><svg viewBox="0 0 72 72"><line x1="12" y1="54" x2="60" y2="54"/><rect x="18" y="30" width="36" height="24" stroke-dasharray="3 3.5"/><line x1="22" y1="30" x2="22" y2="18"/><line x1="50" y1="30" x2="50" y2="18"/><line x1="36" y1="30" x2="36" y2="18"/><line class="ac" x1="16" y1="18" x2="56" y2="18"/></svg></div>
             <p class="proj-desc">Remodelación de terraza con cerramiento de cristal en el campus corporativo EVALOR (Av. Alfonso Reyes). Supervisión en sitio, coordinación técnica y trámite de licencia municipal — del antes al deck terminado.</p>
             <div class="proj-dl"><div class="row"><span class="k">Ubicación</span><span class="v">Sta. Catarina · MTY</span></div><div class="row"><span class="k">Programa</span><span class="v">Cerramiento · terraza corporativa</span></div><div class="row"><span class="k">Alcance</span><span class="v">Supervisión · coordinación · licencia</span></div><div class="row"><span class="k">Crédito</span><span class="v">Cliente: CFA · EVALOR</span></div></div>
             <div class="proj-tags"><span class="tag">+ Obra</span><span class="tag">+ Corporativo</span></div>
@@ -971,6 +1042,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
       <div class="proj-body">
         <div class="proj-inner"><div class="proj-inner-grid">
           <div>
+            <div class="proj-ico" aria-hidden="true"><svg viewBox="0 0 72 72"><rect x="16" y="16" width="40" height="40"/><line x1="36" y1="16" x2="36" y2="34"/><line x1="36" y1="44" x2="36" y2="56"/><circle cx="46" cy="28" r="4.5"/><line x1="22" y1="24" x2="30" y2="24"/><rect class="acf" x="22" y="42" width="12" height="5"/></svg></div>
             <p class="proj-desc">Renovación interior integral en Monterrey — cocina, estar y jardín repensados con materialidad cálida. Desarrollado en MassOperations como Jr. Architect.</p>
             <div class="proj-dl"><div class="row"><span class="k">Ubicación</span><span class="v">Monterrey, MX</span></div><div class="row"><span class="k">Programa</span><span class="v">Interiores · jardín</span></div><div class="row"><span class="k">Herramientas</span><span class="v">Revit · Twinmotion · Photoshop</span></div><div class="row"><span class="k">Crédito</span><span class="v">MassOperations · Jr. Architect</span></div></div>
             <div class="proj-tags"><span class="tag">+ Interiores</span><span class="tag">+ Renovación</span></div>
@@ -990,6 +1062,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
       <div class="proj-body">
         <div class="proj-inner"><div class="proj-inner-grid">
           <div>
+            <div class="proj-ico" aria-hidden="true"><svg viewBox="0 0 72 72"><line x1="18" y1="18" x2="58" y2="18"/><line x1="18" y1="24" x2="58" y2="24"/><line x1="18" y1="30" x2="58" y2="30"/><line x1="20" y1="18" x2="20" y2="46"/><line x1="54" y1="18" x2="54" y2="46"/><path class="ac" d="M16 54 q4 -4 8 0 t8 0 t8 0 t8 0 t8 0"/></svg></div>
             <p class="proj-desc">Remodelación de terraza con espejo de agua y jardín en Monterrey. Exterior de estar, sombra y fuego — desarrollado en MassOperations.</p>
             <div class="proj-dl"><div class="row"><span class="k">Ubicación</span><span class="v">Monterrey, MX</span></div><div class="row"><span class="k">Programa</span><span class="v">Terraza · espejo de agua</span></div><div class="row"><span class="k">Herramientas</span><span class="v">SketchUp · D5 · Photoshop</span></div><div class="row"><span class="k">Crédito</span><span class="v">MassOperations · Jr. Architect</span></div></div>
             <div class="proj-tags"><span class="tag">+ Exteriores</span><span class="tag">+ Renovación</span></div>
@@ -1009,6 +1082,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
       <div class="proj-body">
         <div class="proj-inner"><div class="proj-inner-grid">
           <div>
+            <div class="proj-ico" aria-hidden="true"><svg viewBox="0 0 72 72"><path d="M10 54 L24 32 L34 45 L36 42"/><path d="M52 54 L58 40 L62 46"/><line x1="10" y1="54" x2="62" y2="54"/><path class="ac" d="M36 42 L46 24 L56 42"/></svg></div>
             <p class="proj-desc">Residencia campestre (proyecto de estudio · UDEM): tres volúmenes que enmarcan el paisaje, interiores de madera y piedra hacia el valle.</p>
             <div class="proj-dl"><div class="row"><span class="k">Ubicación</span><span class="v">Monterrey, MX</span></div><div class="row"><span class="k">Programa</span><span class="v">Vivienda campestre</span></div><div class="row"><span class="k">Herramientas</span><span class="v">Revit · D5 · Photoshop</span></div><div class="row"><span class="k">Crédito</span><span class="v">Académico · UDEM</span></div></div>
             <div class="proj-tags"><span class="tag">+ Residencial</span><span class="tag">+ Académico</span></div>
@@ -1028,6 +1102,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
       <div class="proj-body">
         <div class="proj-inner"><div class="proj-inner-grid">
           <div>
+            <div class="proj-ico" aria-hidden="true"><svg viewBox="0 0 72 72"><path d="M18 16 H44 V34 H56 V56 H18 Z"/><line x1="18" y1="34" x2="44" y2="34"/><line x1="30" y1="16" x2="30" y2="34"/><line x1="30" y1="44" x2="56" y2="44"/><rect class="acf" x="46" y="18" width="10" height="10"/></svg></div>
             <p class="proj-desc">Residencia urbana (proyecto de estudio · UDEM). Fachada de concreto y celosía; patio como corazón de la casa.</p>
             <div class="proj-dl"><div class="row"><span class="k">Ubicación</span><span class="v">Monterrey, MX</span></div><div class="row"><span class="k">Programa</span><span class="v">Vivienda unifamiliar</span></div><div class="row"><span class="k">Herramientas</span><span class="v">Revit · D5</span></div><div class="row"><span class="k">Crédito</span><span class="v">Académico · UDEM</span></div></div>
             <div class="proj-tags"><span class="tag">+ Residencial</span><span class="tag">+ Académico</span></div>
@@ -1092,9 +1167,40 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
   </div>
 </section>
 
+<!-- ============ OBRA / PROCESO CONSTRUCTIVO ============ -->
+<section class="sec sec-dark obra" id="obra" data-theme="dark">
+  <span class="eye" data-rev>06 · OBRA</span>
+  <h2 class="dsp">
+    <span class="ln"><span class="ln-i">DEL ANTES</span></span>
+    <span class="ln"><span class="ln-i">AL <span class="rj">ENTREGADO.</span></span></span>
+  </h2>
+  <p class="obra-p" data-rev>El método, aplicado en obra real: cerramiento de terraza CFA · EVALOR en Sta. Catarina — supervisión en sitio, coordinación técnica y licencia, con la misma mano que proyecta.</p>
+  <div class="obra-seq">
+    <figure class="obra-step" data-goproj="5" data-rev>
+      <img src="img/cfa-before.webp" alt="CFA Terrace — estado original" loading="lazy" decoding="async">
+      <span class="os-tag"><span class="os-num">01</span>ANTES</span>
+      <span class="os-arrow">VER PROYECTO ↗</span>
+    </figure>
+    <figure class="obra-step" data-goproj="5" data-rev>
+      <img src="img/cfa-corridor.webp" alt="CFA Terrace — proceso en obra" loading="lazy" decoding="async">
+      <span class="os-tag"><span class="os-num">02</span>PROCESO</span>
+      <span class="os-arrow">VER PROYECTO ↗</span>
+    </figure>
+    <figure class="obra-step" data-goproj="5" data-rev>
+      <img src="img/cfa-terrace.webp" alt="CFA Terrace — obra entregada" loading="lazy" decoding="async">
+      <span class="os-tag"><span class="os-num">03</span>ENTREGA</span>
+      <span class="os-arrow">VER PROYECTO ↗</span>
+    </figure>
+  </div>
+  <div class="obra-foot" data-rev>
+    <span class="eye">CFA · EVALOR — STA. CATARINA, MTY</span>
+    <a class="tag tag-link" href="#proyectos" data-goproj="5">VER FICHA DEL PROYECTO ↗</a>
+  </div>
+</section>
+
 <!-- ============ DIFERENCIA ============ -->
 <section class="sec sec-dark dif" data-theme="dark">
-  <span class="eye" data-rev>06 · DIFERENCIA</span>
+  <span class="eye" data-rev>07 · DIFERENCIA</span>
   <h2 class="dsp">
     <span class="ln"><span class="ln-i">NO HACEMOS ALGO DISTINTO.</span></span>
     <span class="ln"><span class="ln-i"><span class="rj">INTEGRAMOS</span> LO QUE TODOS SEPARAN.</span></span>
@@ -1125,7 +1231,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
 
 <!-- ============ DIRECTOR ============ -->
 <section class="sec sec-dark dir" data-theme="dark">
-  <span class="eye" data-rev>07 · DIRECCIÓN</span>
+  <span class="eye" data-rev>08 · DIRECCIÓN</span>
   <h2 class="dsp"><span class="ln"><span class="ln-i">QUIÉN FIRMA</span></span><span class="ln"><span class="ln-i">TU PROYECTO<span class="rj">.</span></span></span></h2>
 
   <div class="dir-grid">
@@ -1162,7 +1268,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
 
 <!-- ============ CRÉDITOS ============ -->
 <section class="sec sec-dark creds" data-theme="dark">
-  <span class="eye" data-rev>08 · TRAYECTORIA</span>
+  <span class="eye" data-rev>09 · TRAYECTORIA</span>
   <h2 class="dsp"><span class="ln"><span class="ln-i">CON QUIÉNES</span></span><span class="ln"><span class="ln-i">HEMOS TRABAJADO<span class="rj">.</span></span></span></h2>
   <div class="cred-list">
     <div class="cred-item" data-rev><span class="c-num">01</span><div><h3>MassOperations</h3><span class="c-role">Despacho profesional · Monterrey, NL</span></div><p>Estudio donde Emilio desarrolló experiencia profesional como Jr. Architect — proyectos residenciales, comerciales y de uso mixto en diseño, visualización y supervisión de obra, 2024 a la fecha.</p></div>
@@ -1180,7 +1286,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
 <section class="sec sec-light voces" data-theme="light">
   <div class="sec-head" style="margin-bottom:0">
     <div>
-      <span class="eye" data-rev>09 · VOCES</span>
+      <span class="eye" data-rev>10 · VOCES</span>
       <h2 class="dsp"><span class="ln"><span class="ln-i">LO QUE SE DICE<span class="rj">.</span></span></span></h2>
     </div>
     <span class="sec-note" data-rev>CLIENTES ·<br>AGUASCALIENTES</span>
@@ -1208,7 +1314,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
 <section class="sec sec-light faq" data-theme="light">
   <div class="sec-head" style="margin-bottom:0">
     <div>
-      <span class="eye" data-rev>10 · PREGUNTAS</span>
+      <span class="eye" data-rev>11 · PREGUNTAS</span>
       <h2 class="dsp"><span class="ln"><span class="ln-i">ANTES DE EMPEZAR<span class="rj">.</span></span></span></h2>
     </div>
     <span class="sec-note" data-rev>LO QUE TODOS<br>PREGUNTAN</span>
@@ -1264,7 +1370,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
 
 <!-- ============ CTA ============ -->
 <section class="sec sec-light cta" id="contacto" data-theme="light">
-  <span class="eye" data-rev>11 · CONTACTO</span>
+  <span class="eye" data-rev>12 · CONTACTO</span>
   <h2 class="dsp">
     <span class="ln"><span class="ln-i">CUÉNTANOS</span></span>
     <span class="ln"><span class="ln-i">TU IDEA<span class="rj">.</span></span></span>
@@ -1595,6 +1701,66 @@ if (FINE && !REDUCED){
     fol.style.transform=`translate3d(${x}px,${y}px,0) rotate(${rot}deg) scale(${cs.toFixed(3)})`;
     requestAnimationFrame(loop);
   })();
+}
+
+/* ---------- REV.03: clic en imagen → ir al proyecto ---------- */
+const PROJS = qa('.proj');
+function goProject(i){
+  const p = PROJS[i]; if (!p) return;
+  const btn = p.querySelector('.proj-head');
+  p.scrollIntoView({behavior: REDUCED ? 'auto' : 'smooth', block:'center'});
+  setTimeout(()=>{ if (!p.classList.contains('open') && btn) btn.click(); }, REDUCED ? 60 : 750);
+}
+const projByImg = src => {
+  const s = (src||'').toLowerCase();
+  if (s.includes('verdal')) return 0;
+  if (s.includes('petalo')) return 1;
+  if (s.includes('biblioteca')) return 2;
+  if (s.includes('pedregal')) return 3;
+  if (s.includes('parc')) return 4;
+  if (s.includes('cfa')) return 5;
+  if (s.includes('sena')) return 6;
+  if (s.includes('santa-barbara')) return 7;
+  if (s.includes('picos')) return 8;
+  if (s.includes('casa-mv')) return 9;
+  return -1;
+};
+qa('.gitem').forEach(g=>{
+  const im = g.querySelector('img'); if (!im) return;
+  const i = projByImg(im.getAttribute('src'));
+  if (i < 0) return;
+  g.setAttribute('role','link');
+  g.setAttribute('tabindex','0');
+  g.setAttribute('aria-label','Ver proyecto: ' + (PROJS[i] ? PROJS[i].dataset.chip : ''));
+  g.addEventListener('click', ()=>goProject(i));
+  g.addEventListener('keydown', e=>{ if (e.key==='Enter'||e.key===' '){ e.preventDefault(); goProject(i); } });
+});
+qa('[data-goproj]').forEach(el=>{
+  el.addEventListener('click', e=>{ e.preventDefault(); goProject(+el.dataset.goproj); });
+});
+
+/* ---------- REV.03: expo de portada (exhibición) ---------- */
+const expo = q('.hero-expo');
+if (expo){
+  const slides = Array.from(expo.querySelectorAll('img'));
+  const hxN = q('#hxN'), hxT = q('#hxT'), hxLink = q('#hxLink');
+  let cur = 0;
+  const feed = s => { if (s.dataset.src){ s.src = s.dataset.src; s.removeAttribute('data-src'); } };
+  const show = i => {
+    slides[cur].classList.remove('on');
+    cur = i % slides.length;
+    const s = slides[cur];
+    feed(s);
+    s.classList.add('on');
+    if (hxN) hxN.textContent = String(cur+1).padStart(2,'0') + ' / ' + String(slides.length).padStart(2,'0') + ' — EN PORTADA';
+    if (hxT) hxT.textContent = s.dataset.chip || '';
+  };
+  slides[0].classList.add('on');
+  if (hxLink) hxLink.addEventListener('click', e=>{ e.preventDefault(); goProject(+slides[cur].dataset.proj); });
+  if (!REDUCED){
+    addEventListener('load', ()=>slides.forEach(feed), {once:true});
+    setInterval(()=>show(cur+1), 4600);
+  }
 }
 
 /* ============================================================
