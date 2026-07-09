@@ -582,7 +582,30 @@ html.prm .hero-expo img{transition:none;transform:none}
 .obra-step:hover .os-arrow{opacity:1}
 .obra-foot{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-top:clamp(22px,3.5vh,34px);flex-wrap:wrap}
 @media (max-width:860px){.obra-seq{grid-template-columns:1fr}}
-@media(max-width:640px){.gitem img{height:150px}}
+@media(max-width:640px){.gitem img{height:200px}}
+
+/* ============================================================
+   REV.04 — VIDA: micro-animaciones y deleite visual
+   ============================================================ */
+/* La foto del proyecto asienta y sus chips entran al abrir la ficha */
+html:not(.prm) .proj .plano img{transform:scale(1.05);transition:transform 1.25s var(--ease)}
+html:not(.prm) .proj.open .plano img{transform:scale(1)}
+html:not(.prm) .proj .plano-chip,html:not(.prm) .proj .plano-chip2{opacity:0;transition:opacity .5s var(--ease) .32s,transform .5s var(--ease) .32s}
+html:not(.prm) .proj .plano-chip{transform:translateY(-8px)}
+html:not(.prm) .proj .plano-chip2{transform:translateY(8px);transition-delay:.44s}
+html:not(.prm) .proj.open .plano-chip,html:not(.prm) .proj.open .plano-chip2{opacity:1;transform:none}
+/* Obra: barrido escalonado disparado por scroll (clase .shown) */
+html:not(.prm) .obra-step{clip-path:inset(0 100% 0 0);transition:clip-path 1.2s var(--ease)}
+html:not(.prm) .obra-step:nth-child(2){transition-delay:.17s}
+html:not(.prm) .obra-step:nth-child(3){transition-delay:.34s}
+html:not(.prm) .obra-seq.shown .obra-step{clip-path:inset(0 0% 0 0)}
+html:not(.prm) .os-tag{opacity:0;transform:translateX(-14px);transition:opacity .55s var(--ease) .6s,transform .55s var(--ease) .6s}
+html:not(.prm) .obra-step:nth-child(2) .os-tag{transition-delay:.77s}
+html:not(.prm) .obra-step:nth-child(3) .os-tag{transition-delay:.94s}
+html:not(.prm) .obra-seq.shown .os-tag{opacity:1;transform:none}
+.obra-line{height:2px;background:var(--line-d);margin-top:clamp(18px,3vh,28px);position:relative}
+.obra-line i{position:absolute;inset:0;background:var(--rojo);transform:scaleX(0);transform-origin:left center}
+html.prm .obra-line i{transform:scaleX(1)}
 
 /* ---------- Créditos ---------- */
 .creds{padding-top:clamp(80px,13vh,145px);padding-bottom:clamp(80px,13vh,145px)}
@@ -1176,22 +1199,23 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
   </h2>
   <p class="obra-p" data-rev>El método, aplicado en obra real: cerramiento de terraza CFA · EVALOR en Sta. Catarina — supervisión en sitio, coordinación técnica y licencia, con la misma mano que proyecta.</p>
   <div class="obra-seq">
-    <figure class="obra-step" data-goproj="5" data-rev>
+    <figure class="obra-step" data-goproj="5">
       <img src="img/cfa-before.webp" alt="CFA Terrace — estado original" loading="lazy" decoding="async">
       <span class="os-tag"><span class="os-num">01</span>ANTES</span>
       <span class="os-arrow">VER PROYECTO ↗</span>
     </figure>
-    <figure class="obra-step" data-goproj="5" data-rev>
+    <figure class="obra-step" data-goproj="5">
       <img src="img/cfa-corridor.webp" alt="CFA Terrace — proceso en obra" loading="lazy" decoding="async">
       <span class="os-tag"><span class="os-num">02</span>PROCESO</span>
       <span class="os-arrow">VER PROYECTO ↗</span>
     </figure>
-    <figure class="obra-step" data-goproj="5" data-rev>
+    <figure class="obra-step" data-goproj="5">
       <img src="img/cfa-terrace.webp" alt="CFA Terrace — obra entregada" loading="lazy" decoding="async">
       <span class="os-tag"><span class="os-num">03</span>ENTREGA</span>
       <span class="os-arrow">VER PROYECTO ↗</span>
     </figure>
   </div>
+  <div class="obra-line" aria-hidden="true"><i></i></div>
   <div class="obra-foot" data-rev>
     <span class="eye">CFA · EVALOR — STA. CATARINA, MTY</span>
     <a class="tag tag-link" href="#proyectos" data-goproj="5">VER FICHA DEL PROYECTO ↗</a>
@@ -1520,6 +1544,30 @@ const FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
 if (REDUCED) html.classList.add('prm');
 if (hasGsap) gsap.registerPlugin(ScrollTrigger);
 
+/* scroll-behavior:smooth corrompe las mediciones internas de
+   ScrollTrigger.refresh() si un deslizamiento está en vuelo:
+   cancelar el deslizamiento y forzar 'auto' durante cada refresh */
+let safeRefresh = ()=>{};
+if (hasGsap){
+  ScrollTrigger.addEventListener('refreshInit', ()=>{
+    html.style.scrollBehavior='auto';
+    window.scrollTo({top:window.scrollY,left:0,behavior:'auto'});
+  });
+  ScrollTrigger.addEventListener('refresh', ()=>{ html.style.scrollBehavior=''; });
+  /* refresh que espera a que el scroll se asiente antes de medir */
+  let srT=null;
+  safeRefresh = ()=>{
+    clearTimeout(srT);
+    let lastY = -1;
+    const tick = ()=>{
+      const y = window.scrollY;
+      if (Math.abs(y-lastY) < 1) ScrollTrigger.refresh();
+      else { lastY = y; srT = setTimeout(tick, 130); }
+    };
+    srT = setTimeout(tick, 130);
+  };
+}
+
 /* Failsafe: el preloader jamás bloquea la página */
 setTimeout(()=>{
   const pr = q('.pre');
@@ -1582,7 +1630,7 @@ function initAcc(sel){
         const b = c.querySelector('button'); if (b) b.setAttribute('aria-expanded','false');
       });
       if (!wasOpen){ item.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
-      if (hasGsap) setTimeout(()=>ScrollTrigger.refresh(), 700);
+      if (hasGsap) setTimeout(safeRefresh, 700);
     });
   });
 }
@@ -1655,10 +1703,10 @@ if (FINE && !REDUCED){
     requestAnimationFrame(loop);
   })();
   document.addEventListener('mouseover',e=>{
-    if (e.target.closest('a,button,.proj-head,.faq-q')) ring.classList.add('is-hover');
+    if (e.target.closest('a,button,.proj-head,.faq-q,.gitem,.obra-step')) ring.classList.add('is-hover');
   });
   document.addEventListener('mouseout',e=>{
-    if (e.target.closest('a,button,.proj-head,.faq-q')) ring.classList.remove('is-hover');
+    if (e.target.closest('a,button,.proj-head,.faq-q,.gitem,.obra-step')) ring.classList.remove('is-hover');
   });
 }
 
@@ -1754,6 +1802,7 @@ if (expo){
     s.classList.add('on');
     if (hxN) hxN.textContent = String(cur+1).padStart(2,'0') + ' / ' + String(slides.length).padStart(2,'0') + ' — EN PORTADA';
     if (hxT) hxT.textContent = s.dataset.chip || '';
+    if (!REDUCED && hasGsap && hxT) gsap.fromTo([hxT,hxN],{y:9,opacity:0},{y:0,opacity:1,duration:.55,stagger:.06,ease:'power3.out',overwrite:true});
   };
   slides[0].classList.add('on');
   if (hxLink) hxLink.addEventListener('click', e=>{ e.preventDefault(); goProject(+slides[cur].dataset.proj); });
@@ -1854,6 +1903,77 @@ if (!REDUCED){
         }
       }});
     return ()=>{ tween.scrollTrigger && tween.scrollTrigger.kill(); tween.kill(); gsap.set(track,{clearProps:'x'}); };
+  });
+
+  /* ============================================================
+     REV.04 — VIDA: deleite visual
+     ============================================================ */
+
+  /* Expo de portada: profundidad al hacer scroll */
+  gsap.to('.hero-expo',{yPercent:14,scale:1.05,ease:'none',
+    scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+
+  /* Marca del hero: flotación continua */
+  gsap.to('.hero-mark',{y:20,duration:5.5,yoyo:true,repeat:-1,ease:'sine.inOut'});
+
+  /* Obra: barrido escalonado, etiquetas y línea roja de progreso */
+  if (q('.obra')){
+    ScrollTrigger.create({trigger:'.obra-seq',start:'top 78%',once:true,
+      onEnter:()=>q('.obra-seq').classList.add('shown')});
+    gsap.to('.obra-line i',{scaleX:1,ease:'none',
+      scrollTrigger:{trigger:'.obra-seq',start:'top 72%',end:'bottom 60%',scrub:.4}});
+  }
+
+  /* Galería: skew según velocidad de scroll */
+  if (q('.gal')){
+    const skewSet = gsap.quickSetter('.gal','skewY','deg');
+    const clampS = gsap.utils.clamp(-2.2,2.2);
+    const pr = {s:0};
+    ScrollTrigger.create({onUpdate:self=>{
+      const s = clampS(self.getVelocity()/-420);
+      if (Math.abs(s) > Math.abs(pr.s)){
+        pr.s = s;
+        gsap.to(pr,{s:0,duration:.85,ease:'power3',overwrite:true,onUpdate:()=>skewSet(pr.s)});
+      }
+    }});
+  }
+
+  /* Pictogramas: dibujo de línea al abrir la ficha */
+  const ICO = PROJS.map(p=>{
+    const strokes=[], fills=[];
+    p.querySelectorAll('.proj-ico svg *').forEach(el=>{
+      if (el.classList.contains('acf')){ fills.push(el); return; }
+      if (typeof el.getTotalLength !== 'function') return;
+      try{
+        const L = el.getTotalLength();
+        el.style.strokeDasharray = L;
+        el.style.strokeDashoffset = L;
+        strokes.push(el);
+      }catch(e){}
+    });
+    if (fills.length) gsap.set(fills,{opacity:0,transformOrigin:'50% 50%',scale:.4});
+    return {strokes, fills, drawn:false};
+  });
+  function drawIco(i){
+    const d = ICO[i]; if (!d || d.drawn) return;
+    d.drawn = true;
+    gsap.to(d.strokes,{strokeDashoffset:0,duration:1.05,stagger:.08,delay:.2,ease:'power2.inOut',overwrite:true});
+    if (d.fills.length) gsap.to(d.fills,{opacity:1,scale:1,duration:.55,delay:.95,ease:'back.out(2.2)',overwrite:true});
+  }
+  function resetIco(i){
+    const d = ICO[i]; if (!d || !d.drawn) return;
+    d.drawn = false;
+    d.strokes.forEach(el=>{ gsap.set(el,{strokeDashoffset:el.style.strokeDasharray}); });
+    if (d.fills.length) gsap.set(d.fills,{opacity:0,scale:.4});
+  }
+  PROJS.forEach((p,i)=>{
+    const btn = p.querySelector('.proj-head');
+    if (!btn) return;
+    btn.addEventListener('click',()=>{
+      setTimeout(()=>{
+        PROJS.forEach((pp,j)=>{ pp.classList.contains('open') ? drawIco(j) : resetIco(j); });
+      },60);
+    });
   });
 
   addEventListener('load',()=>ScrollTrigger.refresh());
