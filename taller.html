@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ELCEÉ STUDIO · Taller · Del plano a la imagen que vende</title>
+<meta name="description" content="Taller en vivo por Zoom. AutoCAD, Revit, D5 Render, IA y Photoshop. El flujo real de un despacho que construye. 15 lugares.">
+<meta property="og:title" content="ELCEÉ STUDIO · Taller · Del plano a la imagen que vende">
+<meta property="og:description" content="De cero a tu primera imagen que vende. 12 horas en vivo, 15 lugares, sin requisitos previos.">
+<meta property="og:image" content="img/taller/hero.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%229%22 fill=%22%23e8001c%22/><rect x=%2218%22 y=%2218%22 width=%2214%22 height=%227%22 fill=%22%23f5f3ee%22/><rect x=%2218%22 y=%2228%22 width=%2220%22 height=%227%22 fill=%22%23f5f3ee%22/><rect x=%2218%22 y=%2238%22 width=%2228%22 height=%227%22 fill=%22%23f5f3ee%22/></svg>">
+<style>
+:root{--negro:#0a0a0a;--rojo:#e8001c;--crema:#f5f3ee;--gris:#8a8782;--linea:#1e1e1e}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--negro);color:var(--crema);font-family:Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+section{padding:96px 0;border-top:1px solid var(--linea)}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.3em;color:var(--rojo);margin-bottom:18px}
+h2{font-size:clamp(34px,6vw,62px);line-height:.98;letter-spacing:-.035em;font-weight:700}
+h2 .r{color:var(--rojo)}
+p{font-size:17px;line-height:1.65;color:#a8a49e}
+.r{color:var(--rojo)}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(10,10,10,.93);
+  backdrop-filter:blur(14px);border-bottom:1px solid var(--linea)}
+.nav-in{max-width:1180px;margin:0 auto;padding:15px 26px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:15px;font-weight:700;letter-spacing:.18em;white-space:nowrap}
+.nav-links{display:flex;gap:26px}
+.nav-links a{color:var(--gris);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.14em;transition:color .2s}
+.nav-links a:hover{color:var(--crema)}
+.btn{display:inline-block;background:var(--rojo);color:#fff;text-decoration:none;font-size:13px;
+  font-weight:700;letter-spacing:.12em;padding:13px 24px;border:none;cursor:pointer;transition:transform .15s,filter .15s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.btn-g{background:transparent;border:1.5px solid #3a3a3a;color:var(--crema)}
+.btn-g:hover{border-color:var(--crema)}
+@media(max-width:860px){.nav-links{display:none}}
+
+/* ---------- conmutador ESTUDIO / TALLER ---------- */
+.swx{display:flex;align-items:center;gap:15px;margin-left:26px}
+.swx-t{position:relative;font-size:10px;letter-spacing:.3em;font-weight:700;color:var(--gris);
+  text-decoration:none;padding:5px 0;white-space:nowrap;transition:color .28s ease}
+.swx-t:hover{color:var(--crema)}
+.swx-t.on{color:var(--crema)}
+.swx-t.on:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1.5px;background:var(--rojo)}
+.swx-sep{width:1px;height:11px;background:#2e2e2e;flex:none}
+.swx-back{display:inline-flex;align-items:center;gap:7px}
+.swx-back .ar{display:inline-block;transition:transform .28s ease}
+.swx-back:hover .ar{transform:translateX(-4px)}
+@media(max-width:760px){
+  /* en pantallas angostas el encabezado solo muestra el otro lado del sitio */
+  .swx{margin-left:14px;gap:0}
+  .swx-t{font-size:9px;letter-spacing:.2em}
+  .swx-t.on,.swx-sep{display:none}
+  .nav-in{padding:13px 16px;gap:10px}
+  .logo{font-size:12px;letter-spacing:.1em}
+  .nav-in>.btn{padding:11px 14px;font-size:11px;letter-spacing:.06em}
+}
+@media(max-width:360px){.logo{font-size:11px;letter-spacing:.06em}.swx-t{letter-spacing:.12em}}
+
+/* ---------- hero ---------- */
+.herowrap{position:relative;overflow:hidden}
+.herobg{position:absolute;inset:0;background-size:cover;background-position:center 38%;opacity:.62}
+.herobg:after{content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(10,10,10,.94) 0%,rgba(10,10,10,.74) 40%,rgba(10,10,10,.26) 70%,rgba(10,10,10,.55) 100%)}
+.herofade{position:absolute;left:0;right:0;bottom:0;height:200px;
+  background:linear-gradient(transparent,var(--negro));z-index:1}
+.hero{padding:150px 0 92px;position:relative;z-index:2}
+.mark{font-size:clamp(58px,13vw,152px);font-weight:700;letter-spacing:-.05em;line-height:.85}
+.tagline{font-size:clamp(22px,4.2vw,44px);font-weight:700;letter-spacing:-.03em;line-height:1.08;margin-top:30px}
+.stack{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.chip{border:1px solid #2e2e2e;padding:8px 14px;font-size:11px;font-weight:700;letter-spacing:.16em;color:#a8a49e}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:38px}
+.counter{display:flex;gap:26px;margin-top:52px;flex-wrap:wrap}
+.cbox{min-width:78px}
+.cnum{font-size:40px;font-weight:700;letter-spacing:-.04em;line-height:1}
+.clbl{font-size:10px;font-weight:700;letter-spacing:.2em;color:var(--gris);margin-top:7px}
+
+/* ---------- stats band ---------- */
+.band{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;padding:42px 0;border-top:1px solid var(--linea);
+  border-bottom:1px solid var(--linea)}
+.band .n{font-size:clamp(30px,5vw,50px);font-weight:700;letter-spacing:-.04em;line-height:.95}
+.band .l{font-size:10.5px;font-weight:700;letter-spacing:.18em;color:var(--gris);margin-top:11px;line-height:1.55}
+@media(max-width:700px){.band{grid-template-columns:repeat(2,1fr);gap:30px 18px}}
+
+/* ---------- diagrama de flujo ---------- */
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:44px}
+.step{border:1px solid #242424;padding:22px 16px;cursor:pointer;transition:all .22s;position:relative;background:#0d0d0d}
+.step:hover{border-color:#3d3d3d;transform:translateY(-3px)}
+.step.on{border-color:var(--rojo);background:#140406}
+.step .sn{font-size:10px;font-weight:700;letter-spacing:.2em;color:var(--rojo)}
+.step .st{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-top:10px;line-height:1.2}
+.step .sd{font-size:12px;color:var(--gris);margin-top:8px;line-height:1.45}
+.step:after{content:"";position:absolute;right:-8px;top:50%;width:6px;height:6px;border-top:1.5px solid #3a3a3a;
+  border-right:1.5px solid #3a3a3a;transform:translateY(-50%) rotate(45deg)}
+.step:last-child:after{display:none}
+.flowdet{margin-top:22px;border-left:3px solid var(--rojo);padding:20px 24px;background:#0d0d0d;min-height:104px}
+.flowdet h4{font-size:20px;font-weight:700;letter-spacing:-.02em;margin-bottom:9px}
+.flowdet p{font-size:15.5px}
+@media(max-width:860px){.flow{grid-template-columns:repeat(2,1fr)}.step:after{display:none}}
+
+/* ---------- semanas ---------- */
+.tabs{display:flex;gap:8px;margin-top:40px;flex-wrap:wrap}
+.tab{border:1px solid #242424;background:#0d0d0d;color:var(--gris);padding:13px 20px;font-size:12px;
+  font-weight:700;letter-spacing:.14em;cursor:pointer;transition:all .2s;font-family:inherit}
+.tab:hover{color:var(--crema);border-color:#3d3d3d}
+.tab.on{background:var(--rojo);border-color:var(--rojo);color:#fff}
+.pane{display:none;margin-top:30px;border-top:2px solid var(--rojo);padding-top:30px}
+.pane.on{display:grid;grid-template-columns:1.1fr 1fr;gap:48px}
+.pane h3{font-size:clamp(26px,4vw,40px);font-weight:700;letter-spacing:-.033em;line-height:1.05}
+.pane .sub{font-size:15px;color:var(--gris);margin-top:10px;font-weight:700;letter-spacing:.04em}
+.pane ul{list-style:none;margin-top:24px}
+.pane li{font-size:16px;line-height:1.5;color:#b8b4ae;padding-left:22px;position:relative;margin-bottom:13px}
+.pane li:before{content:"";position:absolute;left:0;top:10px;width:9px;height:2px;background:var(--rojo)}
+.deliv{border:1px solid #242424;padding:22px;background:#0d0d0d}
+.deliv .l{font-size:10px;font-weight:700;letter-spacing:.2em;color:var(--rojo)}
+.deliv .v{font-size:19px;font-weight:700;margin-top:9px;line-height:1.3}
+.deliv .f{font-size:14px;color:var(--gris);margin-top:14px;line-height:1.5}
+@media(max-width:860px){.pane.on{grid-template-columns:1fr;gap:28px}}
+
+/* ---------- galería ---------- */
+.gal{columns:3;column-gap:16px;margin-top:44px}
+.gcell{break-inside:avoid;margin-bottom:16px;background:#0d0d0d}
+.gcell{position:relative;cursor:pointer;overflow:hidden;background:#111}
+.gcell img{width:100%;height:auto;display:block;transition:transform .5s;filter:saturate(.96)}
+.gcell:hover img{transform:scale(1.05)}
+.gcap{position:absolute;left:0;bottom:0;right:0;padding:16px 14px 13px;
+  background:linear-gradient(transparent,rgba(0,0,0,.88));font-size:11.5px;font-weight:700;letter-spacing:.14em}
+.gcap span{display:block;color:#9c9791;font-size:10px;margin-top:5px;letter-spacing:.16em}
+@media(max-width:860px){.gal{columns:2;column-gap:10px}}
+@media(max-width:520px){.gal{columns:1}}
+
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(6,6,6,.96);z-index:100;display:none;align-items:center;
+  justify-content:center;padding:26px;cursor:zoom-out}
+.lb.on{display:flex}
+.lb img{max-width:100%;max-height:82vh;display:block}
+.lb .cl{position:absolute;top:22px;right:28px;font-size:30px;color:var(--crema);font-weight:700;cursor:pointer;line-height:1}
+.lb .lc{position:absolute;bottom:26px;left:0;right:0;text-align:center;font-size:12px;font-weight:700;letter-spacing:.2em;color:#9c9791}
+
+/* ---------- entregables ---------- */
+.gets{display:grid;grid-template-columns:repeat(4,1fr);gap:34px 30px;margin-top:46px}
+.get .n{font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--rojo)}
+.get .t{font-size:18px;font-weight:700;letter-spacing:-.012em;margin-top:9px;line-height:1.25}
+.get .d{font-size:14px;color:var(--gris);margin-top:8px;line-height:1.55}
+@media(max-width:900px){.gets{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- precios ---------- */
+.ref{font-size:17px;font-weight:700;color:#67635e;text-decoration:line-through;margin-top:18px}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
+.tier{border:1px solid #242424;padding:32px 26px;background:#0d0d0d;position:relative;transition:all .25s}
+.tier:hover{border-color:#3d3d3d;transform:translateY(-4px)}
+.tier.hot{border-color:var(--rojo);background:#140406}
+.tier .flag{position:absolute;top:-1px;right:-1px;background:var(--rojo);color:#fff;font-size:9.5px;
+  font-weight:700;letter-spacing:.16em;padding:7px 12px}
+.tier .k{font-size:10.5px;font-weight:700;letter-spacing:.2em;color:var(--rojo)}
+.tier .pv{font-size:52px;font-weight:700;letter-spacing:-.045em;margin-top:16px;line-height:1}
+.tier.hot .pv{color:var(--rojo)}
+.tier .pd{font-size:14px;color:var(--gris);margin-top:12px;line-height:1.5}
+.tier .lug{font-size:11px;font-weight:700;letter-spacing:.16em;color:#67635e;margin-top:16px;
+  padding-top:14px;border-top:1px solid #242424}
+@media(max-width:900px){.tiers{grid-template-columns:1fr}}
+.paybar{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:38px;padding-top:32px;border-top:1px solid var(--linea)}
+.paybar .k{font-size:10.5px;font-weight:700;letter-spacing:.2em;color:var(--rojo)}
+.paybar .t{font-size:17px;font-weight:700;margin-top:9px}
+.paybar .d{font-size:13.5px;color:var(--gris);margin-top:7px;line-height:1.55}
+@media(max-width:760px){.paybar{grid-template-columns:1fr;gap:24px}}
+
+/* ---------- faq ---------- */
+.faq{margin-top:38px;border-top:1px solid var(--linea)}
+.q{border-bottom:1px solid var(--linea);padding:22px 0;cursor:pointer}
+.q .qh{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.q .qt{font-size:18px;font-weight:700;letter-spacing:-.015em}
+.q .qi{font-size:22px;color:var(--rojo);font-weight:700;transition:transform .25s;flex:none;line-height:1}
+.q.on .qi{transform:rotate(45deg)}
+.q .qa{max-height:0;overflow:hidden;transition:max-height .3s ease;font-size:15.5px;color:var(--gris);line-height:1.65}
+.q.on .qa{max-height:320px;margin-top:14px}
+
+/* ---------- cierre ---------- */
+.close{text-align:center;padding:106px 0 70px}
+.close h2{margin-bottom:26px}
+footer{border-top:1px solid var(--linea);padding:40px 0;text-align:center;font-size:11px;
+  font-weight:700;letter-spacing:.2em;color:#5c5852}
+.emark{width:60px;height:60px;background:var(--rojo);display:flex;flex-direction:column;justify-content:center;
+  gap:5px;padding-left:15px;margin:0 auto 26px}
+.emark i{display:block;background:var(--crema);height:6px}
+.emark i:nth-child(1){width:17px}.emark i:nth-child(2){width:24px}.emark i:nth-child(3){width:32px}
+
+/* sticky mobile cta */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--rojo);padding:15px;
+  text-align:center;display:none}
+.sticky a{color:#fff;text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.14em}
+@media(max-width:860px){.sticky{display:block}body{padding-bottom:54px}}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <div style="display:flex;align-items:center;min-width:0">
+      <a class="logo" href="index.html" style="color:inherit;text-decoration:none">ELCEÉ <span class="r">STUDIO</span></a>
+      <div class="swx" role="navigation" aria-label="Sitio">
+        <a class="swx-t swx-back" href="index.html"><span class="ar" aria-hidden="true">←</span>ESTUDIO</a>
+        <span class="swx-sep" aria-hidden="true"></span>
+        <a class="swx-t on" href="taller.html" aria-current="page">TALLER</a>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#flujo">EL FLUJO</a>
+      <a href="#programa">PROGRAMA</a>
+      <a href="#obra">OBRA</a>
+      <a href="#inversion">INVERSIÓN</a>
+    </div>
+    <a class="btn" href="https://wa.me/524491870292?text=Hola%20Emilio%2C%20quiero%20apartar%20mi%20lugar%20en%20el%20taller%20de%20ELCE%C3%89%20STUDIO" target="_blank">APARTAR LUGAR</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="herowrap"><div class="herobg" id="hbg"></div><div class="herofade"></div>
+<div class="wrap hero">
+  <div class="eyebrow">DESDE CERO · OCTUBRE 2026 · EN VIVO POR ZOOM</div>
+  <div class="mark">ELCEÉ<br><span class="r">STUDIO</span></div>
+  <div class="tagline">De cero a tu primera imagen<br>que <span class="r">vende.</span></div>
+  <div class="stack">
+    <div class="chip">AUTOCAD</div><div class="chip">REVIT</div><div class="chip">D5 RENDER</div>
+    <div class="chip">IA</div><div class="chip">PHOTOSHOP</div>
+  </div>
+  <div class="hero-cta">
+    <a class="btn" href="https://wa.me/524491870292?text=Hola%20Emilio%2C%20quiero%20apartar%20mi%20lugar%20en%20el%20taller%20de%20ELCE%C3%89%20STUDIO" target="_blank">APARTAR MI LUGAR · $1,000</a>
+    <a class="btn btn-g" href="#programa">VER EL PROGRAMA</a>
+  </div>
+  <div class="counter" id="cd">
+    <div class="cbox"><div class="cnum" id="d">—</div><div class="clbl">DÍAS</div></div>
+    <div class="cbox"><div class="cnum" id="h">—</div><div class="clbl">HORAS</div></div>
+    <div class="cbox"><div class="cnum" id="m">—</div><div class="clbl">MINUTOS</div></div>
+    <div class="cbox" style="min-width:210px"><div class="cnum r" style="font-size:19px;line-height:1.35;padding-top:8px">CIERRE DE<br>INSCRIPCIONES</div><div class="clbl">VIERNES 2 DE OCTUBRE</div></div>
+  </div>
+</div>
+</div>
+
+<div class="wrap">
+  <div class="band reveal">
+    <div><div class="n r">12</div><div class="l">HORAS EN VIVO<br>4 SESIONES DE 3 H</div></div>
+    <div><div class="n">15</div><div class="l">LUGARES<br>GRUPO CERRADO</div></div>
+    <div><div class="n">0</div><div class="l">REQUISITOS PREVIOS<br>SE EMPIEZA DE CERO</div></div>
+    <div><div class="n r">1</div><div class="l">IMAGEN TERMINADA<br>HECHA POR TI</div></div>
+  </div>
+</div>
+
+<!-- FLUJO -->
+<section id="flujo"><div class="wrap">
+  <div class="eyebrow">EL FLUJO</div>
+  <h2 class="reveal">CINCO PASOS.<br><span class="r">TODOS DESDE CERO.</span></h2>
+  <p style="margin-top:22px;max-width:660px">No damos nada por sabido. Cada programa se abre desde
+  la interfaz y se ve solo lo que hace falta para llegar a la imagen. Toca cada paso.</p>
+
+  <div class="flow">
+    <div class="step on" data-i="0"><div class="sn">01</div><div class="st">AutoCAD</div><div class="sd">Plano depurado</div></div>
+    <div class="step" data-i="1"><div class="sn">02</div><div class="st">Revit</div><div class="sd">Modelo para render</div></div>
+    <div class="step" data-i="2"><div class="sn">03</div><div class="st">D5 Render</div><div class="sd">Luz y materia</div></div>
+    <div class="step" data-i="3"><div class="sn">04</div><div class="st">IA</div><div class="sd">Contexto y variantes</div></div>
+    <div class="step" data-i="4"><div class="sn">05</div><div class="st">Photoshop</div><div class="sd">Lámina final</div></div>
+  </div>
+  <div class="flowdet" id="fd"></div>
+</div></section>
+
+<!-- PROGRAMA -->
+<section id="programa"><div class="wrap">
+  <div class="eyebrow">PROGRAMA · 4 SEMANAS</div>
+  <h2 class="reveal">CADA SEMANA<br>SALES CON <span class="r">ALGO HECHO.</span></h2>
+  <div class="tabs" id="tabs"></div>
+  <div id="panes"></div>
+</div></section>
+
+<!-- OBRA -->
+<section id="obra"><div class="wrap">
+  <div class="eyebrow">ANTECEDENTES</div>
+  <h2 class="reveal">LO QUE PRODUCE <span class="r">EL DESPACHO.</span></h2>
+  <p style="margin-top:22px;max-width:620px">Todo lo que se enseña salió de estos proyectos.
+  El mismo flujo, las mismas herramientas.</p>
+  <div class="gal" id="gal"></div>
+</div></section>
+
+<!-- ENTREGABLES -->
+<section><div class="wrap">
+  <div class="eyebrow">ENTREGABLES</div>
+  <h2 class="reveal">QUÉ TE LLEVAS<span class="r">.</span></h2>
+  <div class="gets" id="gets"></div>
+</div></section>
+
+<!-- INVERSIÓN -->
+<section id="inversion"><div class="wrap">
+  <div class="eyebrow">INVERSIÓN</div>
+  <h2 class="reveal">EL PRECIO SUBE<br>CONFORME SE <span class="r">LLENA.</span></h2>
+  <div class="ref">Valor de referencia $4,900 MXN</div>
+  <div class="tiers">
+    <div class="tier hot">
+      <div class="flag">6 LUGARES</div>
+      <div class="k">TARIFA FUNDADOR</div>
+      <div class="pv">$2,900</div>
+      <div class="pd">Primera generación. Vigente hasta el 22 de septiembre o hasta agotar lugares.</div>
+      <div class="lug">MXN · POR PERSONA</div>
+    </div>
+    <div class="tier">
+      <div class="k">PREVENTA</div>
+      <div class="pv">$3,500</div>
+      <div class="pd">Del 23 al 30 de septiembre. Mismos contenidos y entregables.</div>
+      <div class="lug">6 LUGARES · MXN POR PERSONA</div>
+    </div>
+    <div class="tier">
+      <div class="k">ÚLTIMOS LUGARES</div>
+      <div class="pv">$3,900</div>
+      <div class="pd">1 y 2 de octubre. Cierre definitivo de inscripciones.</div>
+      <div class="lug">3 LUGARES · MXN POR PERSONA</div>
+    </div>
+  </div>
+  <div class="paybar">
+    <div><div class="k">APARTADO</div><div class="t">$1,000 MXN</div>
+      <div class="d">Asegura tu lugar y congela el precio de tu tramo. El resto se liquida antes del 2 de octubre.</div></div>
+    <div><div class="k">FORMA DE PAGO</div><div class="t">Solo transferencia</div>
+      <div class="d">Transferencia bancaria SPEI, único método de pago. Los datos se comparten al apartar tu lugar.</div></div>
+    <div><div class="k">TRAE A ALGUIEN</div><div class="t">Tarifa del tramo anterior</div>
+      <div class="d">Si te inscribes con un compañero, ambos conservan la tarifa del tramo previo.</div></div>
+  </div>
+  <div style="margin-top:36px"><a class="btn" href="https://wa.me/524491870292?text=Hola%20Emilio%2C%20quiero%20apartar%20mi%20lugar%20en%20el%20taller%20de%20ELCE%C3%89%20STUDIO" target="_blank">APARTAR MI LUGAR AHORA</a></div>
+</div></section>
+
+<!-- FAQ -->
+<section><div class="wrap">
+  <div class="eyebrow">DUDAS</div>
+  <h2 class="reveal">LO QUE SIEMPRE<br>PREGUNTAN<span class="r">.</span></h2>
+  <div class="faq" id="faq"></div>
+</div></section>
+
+<!-- CIERRE -->
+<div class="wrap close">
+  <div class="emark"><i></i><i></i><i></i></div>
+  <h2>QUIEN ENSEÑA,<br><span class="r">CONSTRUYE.</span></h2>
+  <p style="max-width:580px;margin:0 auto 26px">Sin requisitos previos. 15 lugares. En vivo por Zoom.<br>Arranca el sábado 3 de octubre.</p>
+  <p style="max-width:580px;margin:0 auto 32px;color:var(--crema);font-weight:700;letter-spacing:.06em">449 187 0292 · 449 383 2300<br>elcgrupoarqui@gmail.com</p>
+  <a class="btn" href="https://wa.me/524491870292?text=Hola%20Emilio%2C%20quiero%20apartar%20mi%20lugar%20en%20el%20taller%20de%20ELCE%C3%89%20STUDIO" target="_blank">APARTAR MI LUGAR</a>
+</div>
+
+<footer>
+  ELCEÉ <span class="r">STUDIO</span> · ARQUITECTURA · CONSTRUCCIÓN · DISEÑO<br>
+  <span style="color:#403d39">ARQ. EMILIO OCTAVIO LÓPEZ CARRASCO · AGUASCALIENTES, MÉXICO</span><br>
+  <span style="color:var(--crema);font-size:15px;letter-spacing:.12em;display:inline-block;margin-top:14px">449 187 0292 &nbsp;·&nbsp; 449 383 2300 &nbsp;·&nbsp; ELCGRUPOARQUI@GMAIL.COM</span><br>
+  <span style="color:#403d39">ELCEE-STUDIO.UP.RAILWAY.APP · @ELCEE_STUDIO</span><br>
+  <a href="index.html" style="display:inline-block;margin-top:20px;color:var(--crema);text-decoration:none;
+     font-size:11px;font-weight:700;letter-spacing:.3em;border-bottom:1.5px solid var(--rojo);padding-bottom:5px">← VER EL ESTUDIO Y LOS PROYECTOS</a>
+</footer>
+
+<div class="sticky"><a href="https://wa.me/524491870292?text=Hola%20Emilio%2C%20quiero%20apartar%20mi%20lugar%20en%20el%20taller%20de%20ELCE%C3%89%20STUDIO" target="_blank">APARTAR MI LUGAR · 15 CUPOS</a></div>
+
+<div class="lb" id="lb"><div class="cl">&times;</div><img id="lbi" alt=""><div class="lc" id="lbc"></div></div>
+
+<script>
+const FLOW=[
+ {t:"AutoCAD · La base",d:"Desde la interfaz: los comandos que sí se usan, capas y escala real. Aprendes a leer y limpiar un plano antes de modelar nada."},
+ {t:"Revit · El modelo",d:"Desde cero: niveles, muros, vanos, cubiertas y terreno. Qué modelar y qué no cuando el objetivo es la imagen y no la documentación."},
+ {t:"D5 Render · La escena",d:"Interfaz y primera escena. Materiales que se ven caros, luz de día y de noche, y la clase que casi nadie da: composición y altura de cámara."},
+ {t:"IA · Contexto y variantes",d:"Entorno, cielo, vegetación y variantes de fachada en minutos. Con imagen base y control, para acelerar sin perder el proyecto."},
+ {t:"Photoshop · El acabado",d:"Capas y máscaras desde cero, color, atmósfera y corrección de verticales. Se cierra con el armado de lámina y cómo se cotiza el trabajo."}];
+
+const WEEKS=[
+ {n:"SEMANA 01",f:"SÁB 3 OCT",t:"LA BASE LIMPIA",s:"De AutoCAD a un modelo que sí renderiza",
+  li:["AutoCAD desde cero: interfaz, comandos que sí se usan, capas y escala real",
+      "Cómo se lee y se limpia un plano antes de modelar nada",
+      "Revit desde cero: niveles, muros, vanos, cubiertas y terreno",
+      "Qué modelar y qué no cuando el objetivo es la imagen",
+      "Exportar a D5 Render con sincronización en vivo"],
+  e:"Tu modelo, hecho por ti y abierto en D5",f2:"Te llevas: plantilla Revit ELCEÉ + plano base de práctica"},
+ {n:"SEMANA 02",f:"SÁB 10 OCT",t:"LUZ, MATERIA Y CÁMARA",s:"D5 Render: de modelo gris a imagen creíble",
+  li:["D5 Render desde cero: interfaz, navegación y primera escena",
+      "Materiales: qué hace que una imagen se vea cara y qué la delata",
+      "Iluminación diurna, atardecer y escena nocturna",
+      "Vegetación, gente y mobiliario: escala, densidad y criterio",
+      "Composición y cámara: altura de lente, encuadre y verticales"],
+  e:"Tus primeros dos renders: un exterior y un interior",f2:"Te llevas: biblioteca de materiales + presets de cámara e iluminación"},
+ {n:"SEMANA 03",f:"SÁB 17 OCT",t:"IA CON CONTROL",s:"Acelerar sin perder el proyecto",
+  li:["Qué sí y qué no se le puede pedir a la IA en arquitectura",
+      "Generación de contexto, entorno y cielo sobre tu propio render",
+      "Variantes de fachada y materialidad para presentar opciones al cliente",
+      "Upscaling, recuperación de detalle y limpieza de artefactos",
+      "Trabajar con imagen base y control: no perder el diseño"],
+  e:"Render mejorado + dos variantes de materialidad",f2:"Te llevas: catálogo de prompts ELCEÉ por tipología"},
+ {n:"SEMANA 04",f:"SÁB 24 OCT",t:"POSTPRODUCCIÓN Y COBRO",s:"Cerrar la imagen y cerrar la venta",
+  li:["Photoshop desde cero: capas, máscaras y ajustes que sí importan",
+      "Curvas, color, contraste, atmósfera y corrección de verticales",
+      "Cielos, gente y retoque que se ve real",
+      "Armado de lámina: presentar para que aprueben, no para que opinen",
+      "Cómo se cobra: rangos de mercado, paquetes, anticipos y revisiones"],
+  e:"Lámina de presentación terminada, lista para portafolio",f2:"Te llevas: acciones de Photoshop + plantilla de cotización de renders"}];
+
+const GETS=[
+ ["01","Grabación completa","Las 4 sesiones grabadas, disponibles seis meses. Si faltas, no pierdes la clase."],
+ ["02","Paquete de archivos","Plantilla Revit, biblioteca de materiales D5, acciones de Photoshop y plantilla de lámina."],
+ ["03","Catálogo de prompts","Prompts de IA probados en proyecto real, por tipología: residencial, comercial e interior."],
+ ["04","Plantilla de cotización","El formato con el que se cobra un paquete de renders: alcance, revisiones y anticipos."],
+ ["05","InDesign para portafolio","Curso grabado de una hora, incluido. Maquetación de portafolio profesional desde cero."],
+ ["06","Guía de instalación","Paso a paso para dejar los cinco programas corriendo antes de la sesión 01."],
+ ["07","Revisión 1 a 1","Veinte minutos de revisión individual de tu lámina final, para quienes entreguen."],
+ ["08","Constancia con folio","Constancia digital emitida y firmada por ELCEÉ STUDIO."]];
+
+const FAQ=[
+ ["¿Necesito saber algo de antes?","No. El taller arranca desde cero: cada programa se abre desde la interfaz. Si nunca has tocado Revit o D5, este es tu lugar."],
+ ["¿Voy a salir siendo experto en los cinco programas?","No. La meta es el nivel básico: sales con las bases de los cinco programas y con una imagen terminada por ti. Dominarlos toma años, no doce horas."],
+ ["¿Incluye las licencias de los programas?","No. Cada participante los instala por su cuenta, pero se envía la guía paso a paso para dejarlos corriendo antes de la sesión 01."],
+ ["¿Qué equipo necesito?","Computadora con tarjeta de video dedicada para correr D5 con fluidez y conexión estable. Al inscribirte recibes la guía paso a paso para instalar los cinco programas."],
+ ["¿Y si falto a una sesión?","La grabación queda el mismo día y está disponible seis meses. No pierdes contenido."],
+ ["¿Es presencial?","No. Es en vivo por Zoom, sábados de 10:00 a 13:00, durante cuatro semanas."],
+ ["¿Puedo pagar con tarjeta o a meses?","No. El pago es únicamente por transferencia bancaria. Apartas con $1,000 y liquidas el resto antes del 2 de octubre."],
+ ["¿Dan factura?","Sí, se expide factura."]];
+
+const GAL=[{"u": "img/taller/casa-en-ladera.jpg", "t": "CASA EN LADERA", "s": "RESIDENCIAL · VISTA A LA CIUDAD"}, {"u": "img/taller/patio-y-cafeteria.jpg", "t": "PATIO Y CAFETERÍA", "s": "COMERCIAL"}, {"u": "img/taller/casa-panorama-203.jpg", "t": "CASA PANORAMA 203", "s": "RESIDENCIAL · AGUASCALIENTES"}, {"u": "img/taller/biblioteca-madero.jpg", "t": "BIBLIOTECA MADERO", "s": "CULTURAL · INTERIOR"}, {"u": "img/taller/bano-concreto-y-celosia.jpg", "t": "BAÑO · CONCRETO Y CELOSÍA", "s": "RESIDENCIAL"}, {"u": "img/taller/cafeteria.jpg", "t": "CAFETERÍA", "s": "ESCENA NOCTURNA"}, {"u": "img/taller/conjunto-institucional.jpg", "t": "CONJUNTO INSTITUCIONAL", "s": "FACHADA · GRAN ESCALA"}, {"u": "img/taller/bano-principal.jpg", "t": "BAÑO PRINCIPAL", "s": "RESIDENCIAL · LUZ FILTRADA"}, {"u": "img/taller/sala-de-juegos.jpg", "t": "SALA DE JUEGOS", "s": "DOBLE ALTURA"}, {"u": "img/taller/departamento.jpg", "t": "DEPARTAMENTO", "s": "INTERIOR NOCTURNO"}, {"u": "img/taller/edificio-corporativo.jpg", "t": "EDIFICIO CORPORATIVO", "s": "FACHADA"}];
+const HERO="img/taller/hero.jpg";
+document.getElementById('hbg').style.backgroundImage='url("'+HERO+'")';
+
+/* flujo */
+const fd=document.getElementById('fd');
+function setFlow(i){
+  document.querySelectorAll('.step').forEach(s=>s.classList.toggle('on',+s.dataset.i===i));
+  fd.innerHTML='<h4>'+FLOW[i].t+'</h4><p>'+FLOW[i].d+'</p>';
+}
+document.querySelectorAll('.step').forEach(s=>s.addEventListener('click',()=>setFlow(+s.dataset.i)));
+setFlow(0);
+
+/* semanas */
+const tabs=document.getElementById('tabs'),panes=document.getElementById('panes');
+WEEKS.forEach((w,i)=>{
+  const b=document.createElement('button');
+  b.className='tab'+(i===0?' on':''); b.textContent=w.n+' · '+w.t; b.dataset.i=i;
+  tabs.appendChild(b);
+  const p=document.createElement('div');
+  p.className='pane'+(i===0?' on':''); p.dataset.i=i;
+  p.innerHTML='<div><div style="font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--rojo)">'+w.n+' · '+w.f+
+    '</div><h3>'+w.t+'</h3><div class="sub">'+w.s+'</div><ul>'+w.li.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'+
+    '<div class="deliv"><div class="l">ENTREGABLE DE LA SEMANA</div><div class="v">'+w.e+'</div><div class="f">'+w.f2+'</div></div>';
+  panes.appendChild(p);
+});
+tabs.addEventListener('click',e=>{
+  const b=e.target.closest('.tab'); if(!b)return;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t===b));
+  document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.dataset.i===b.dataset.i));
+});
+
+/* galería */
+const gal=document.getElementById('gal');
+GAL.forEach(g=>{
+  const d=document.createElement('div'); d.className='gcell';
+  d.innerHTML='<img src="'+g.u+'" alt="'+g.t+'" loading="lazy" decoding="async"><div class="gcap">'+g.t+'<span>'+g.s+'</span></div>';
+  d.addEventListener('click',()=>{
+    document.getElementById('lbi').src=g.u;
+    document.getElementById('lbc').textContent=g.t+' · '+g.s;
+    document.getElementById('lb').classList.add('on');
+  });
+  gal.appendChild(d);
+});
+document.getElementById('lb').addEventListener('click',()=>document.getElementById('lb').classList.remove('on'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('lb').classList.remove('on')});
+
+/* entregables */
+document.getElementById('gets').innerHTML=GETS.map(g=>
+  '<div class="get"><div class="n">'+g[0]+'</div><div class="t">'+g[1]+'</div><div class="d">'+g[2]+'</div></div>').join('');
+
+/* faq */
+const faq=document.getElementById('faq');
+FAQ.forEach(f=>{
+  const d=document.createElement('div'); d.className='q';
+  d.innerHTML='<div class="qh"><div class="qt">'+f[0]+'</div><div class="qi">+</div></div><div class="qa">'+f[1]+'</div>';
+  d.addEventListener('click',()=>d.classList.toggle('on'));
+  faq.appendChild(d);
+});
+
+/* contador */
+const END=new Date('2026-10-02T23:59:00-06:00').getTime();
+function tick(){
+  const t=END-Date.now();
+  if(t<=0){document.getElementById('d').textContent='0';document.getElementById('h').textContent='0';
+    document.getElementById('m').textContent='0';return;}
+  document.getElementById('d').textContent=Math.floor(t/864e5);
+  document.getElementById('h').textContent=Math.floor(t/36e5)%24;
+  document.getElementById('m').textContent=Math.floor(t/6e4)%60;
+}
+tick(); setInterval(tick,30000);
+
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.14});
+document.querySelectorAll('.reveal').forEach(e=>io.observe(e));
+</script>
+</body>
+</html>

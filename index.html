@@ -133,6 +133,23 @@ html.menu-open .hd{color:var(--crema)!important}
 .hd-logo .rj{color:var(--rojo)}
 .hd-right{display:flex;align-items:center;gap:26px}
 .hd-loc{font-size:10px;letter-spacing:.38em;font-weight:700;color:currentColor;opacity:.55}
+.hd-tabs{display:flex;align-items:center;gap:15px;margin-left:30px}
+.hd-tab{position:relative;font-size:10px;letter-spacing:.3em;font-weight:700;color:currentColor;
+  opacity:.5;padding:5px 0;white-space:nowrap;transition:opacity .3s var(--ease)}
+.hd-tab:hover,.hd-tab.on{opacity:1}
+.hd-tab.on:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1.5px;background:var(--rojo)}
+.hd-tab-sep{width:1px;height:11px;background:currentColor;opacity:.25;flex:none}
+.hd-tab-new{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--rojo);
+  margin-left:8px;vertical-align:middle;animation:tabDot 2.6s var(--ease) infinite}
+@keyframes tabDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.45}}
+html.prm .hd-tab-new{animation:none}
+@media(max-width:760px){
+  /* en pantallas angostas el encabezado solo muestra el otro lado del sitio */
+  .hd-tabs{margin-left:16px;gap:0}
+  .hd-tab{font-size:9px;letter-spacing:.2em}
+  .hd-tab.on,.hd-tab-sep{display:none}
+}
+@media(max-width:360px){.hd-logo{font-size:11px;letter-spacing:.18em}.hd-tab{letter-spacing:.12em}}
 .burger{display:flex;align-items:center;gap:12px;padding:8px 0}
 .burger-lbl{font-size:10px;letter-spacing:.38em;font-weight:700}
 .burger-ic{width:30px;height:14px;position:relative}
@@ -163,6 +180,10 @@ html.prm .menu-link .ml-i{transform:none}
 .menu-link .ml-t{transition:transform .5s var(--ease),color .3s}
 .menu-link:hover .ml-t{transform:translateX(16px);color:var(--rojo)}
 .menu-link:hover sup{color:var(--rojo)}
+.menu-link.is-alt .ml-t{color:var(--rojo)}
+.menu-link.is-alt sup{color:var(--rojo)}
+.ml-badge{font-size:10px;letter-spacing:.26em;font-weight:700;color:var(--negro);background:var(--rojo);
+  padding:4px 9px;margin-left:16px;align-self:center;white-space:nowrap}
 .menu-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;border-top:1px solid var(--line-d);padding-top:22px;flex-wrap:wrap}
 .menu-foot .eye{color:var(--mut-d)}
 .menu-foot a.eye{color:var(--crema);transition:color .3s}
@@ -650,7 +671,14 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
 
 <!-- HEADER -->
 <header class="hd">
-  <a class="hd-logo" href="#inicio" aria-label="ELCEÉ STUDIO — inicio">ELCEÉ <span class="rj">STUDIO</span></a>
+  <div style="display:flex;align-items:center;min-width:0">
+    <a class="hd-logo" href="#inicio" aria-label="ELCEÉ STUDIO — inicio">ELCEÉ <span class="rj">STUDIO</span></a>
+    <nav class="hd-tabs" aria-label="Sitio">
+      <a class="hd-tab on" href="index.html" aria-current="page">ESTUDIO</a>
+      <span class="hd-tab-sep" aria-hidden="true"></span>
+      <a class="hd-tab" href="taller.html">TALLER<span class="hd-tab-new" aria-hidden="true"></span></a>
+    </nav>
+  </div>
   <div class="hd-right">
     <span class="hd-loc">CDMX · AGS · MTY</span>
     <a class="hd-cta" href="https://ig.me/m/elcee_studio" target="_blank" rel="noopener">INICIAR ↗</a>
@@ -671,6 +699,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
     <a class="menu-link dsp" href="#metodo"><span class="ml-i"><sup>05</sup><span class="ml-t">MÉTODO</span></span></a>
     <a class="menu-link dsp" href="#obra"><span class="ml-i"><sup>06</sup><span class="ml-t">OBRA</span></span></a>
     <a class="menu-link dsp" href="#contacto"><span class="ml-i"><sup>07</sup><span class="ml-t">CONTACTO</span></span></a>
+    <a class="menu-link dsp is-alt" href="taller.html"><span class="ml-i"><sup>08</sup><span class="ml-t">TALLER</span><span class="ml-badge">NUEVO</span></span></a>
   </div>
   <div class="menu-foot">
     <span class="eye">AGUASCALIENTES, MÉXICO — EST. 2026</span>
@@ -1468,6 +1497,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
     <a href="mailto:elcgrupoarqui@gmail.com">elcgrupoarqui@gmail.com</a>
     <a href="https://elcee-studio.up.railway.app" target="_blank" rel="noopener">elcee-studio.up.railway.app</a>
     <a href="https://instagram.com/elcee_studio" target="_blank" rel="noopener">@elcee_studio</a>
+    <a href="taller.html" style="color:var(--rojo)">Taller · del plano a la imagen que vende →</a>
   </div>
 
   <svg class="seal" viewBox="0 0 160 160" aria-hidden="true">
@@ -1485,7 +1515,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
 
   <div class="ft-bar">
     <span>© 2026 ELCEÉ STUDIO · TODOS LOS DERECHOS RESERVADOS</span>
-    <span>PRJ-WEB-001 · REV.02 · JUL 2026</span>
+    <span>PRJ-WEB-001 · REV.05 · SEP 2026</span>
     <span>HECHO EN AGUASCALIENTES, MX</span>
   </div>
 </footer>
@@ -1660,8 +1690,9 @@ burger.addEventListener('click', ()=> setMenu(!menuOpen));
 document.addEventListener('keydown', e=>{ if (e.key==='Escape' && menuOpen) setMenu(false); });
 qa('.menu-link').forEach(a=>{
   a.addEventListener('click', e=>{
-    e.preventDefault();
     const id = a.getAttribute('href');
+    if (!id || id.charAt(0) !== '#') return;   /* enlace a otra página: navegación normal */
+    e.preventDefault();
     setMenu(false);
     setTimeout(()=>{ const t=q(id); if (t) t.scrollIntoView({behavior: REDUCED?'auto':'smooth'}); }, REDUCED?0:650);
   });
