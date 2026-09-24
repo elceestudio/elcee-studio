@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ELCEÉ STUDIO · Taller · Del plano a la imagen que vende</title>
-<meta name="description" content="Taller en vivo por Zoom. AutoCAD, Revit, D5 Render, IA y Photoshop. El flujo real de un despacho que construye. 15 lugares.">
+<meta name="description" content="Curso de render arquitectónico en vivo por Zoom. 6 jueves, de 7 a 10 pm, desde el 15 de octubre. AutoCAD, Revit, D5 Render, Photoshop e IA. 15 lugares.">
 <meta property="og:title" content="ELCEÉ STUDIO · Taller · Del plano a la imagen que vende">
-<meta property="og:description" content="De cero a tu primera imagen que vende. 12 horas en vivo, 15 lugares, sin requisitos previos.">
+<meta property="og:description" content="De cero a tu primera imagen que vende. 18 horas en vivo, 6 jueves, 15 lugares, sin requisitos previos.">
 <meta property="og:image" content="img/taller/hero.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%229%22 fill=%22%23e8001c%22/><rect x=%2218%22 y=%2218%22 width=%2214%22 height=%227%22 fill=%22%23f5f3ee%22/><rect x=%2218%22 y=%2228%22 width=%2220%22 height=%227%22 fill=%22%23f5f3ee%22/><rect x=%2218%22 y=%2238%22 width=%2228%22 height=%227%22 fill=%22%23f5f3ee%22/></svg>">
@@ -68,7 +68,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(10,10,10,.93)
   background:linear-gradient(100deg,rgba(10,10,10,.94) 0%,rgba(10,10,10,.74) 40%,rgba(10,10,10,.26) 70%,rgba(10,10,10,.55) 100%)}
 .herofade{position:absolute;left:0;right:0;bottom:0;height:200px;
   background:linear-gradient(transparent,var(--negro));z-index:1}
-.hero{padding:150px 0 92px;position:relative;z-index:2}
+.hero{padding:150px 26px 92px;position:relative;z-index:2}
 .mark{font-size:clamp(58px,13vw,152px);font-weight:700;letter-spacing:-.05em;line-height:.85}
 .tagline{font-size:clamp(22px,4.2vw,44px);font-weight:700;letter-spacing:-.03em;line-height:1.08;margin-top:30px}
 .stack{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
@@ -78,6 +78,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(10,10,10,.93)
 .cbox{min-width:78px}
 .cnum{font-size:40px;font-weight:700;letter-spacing:-.04em;line-height:1}
 .clbl{font-size:10px;font-weight:700;letter-spacing:.2em;color:var(--gris);margin-top:7px}
+.cdhead{font-size:11px;font-weight:700;letter-spacing:.3em;color:var(--crema);margin-top:46px;display:flex;align-items:center;gap:12px}
+.cdhead:before{content:"";width:9px;height:9px;border-radius:50%;background:var(--rojo);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.25;transform:scale(.7)}}
+.cdhead+.counter{margin-top:18px}
+.cnum.tk{animation:tk .45s cubic-bezier(.2,.7,.2,1)}
+@keyframes tk{0%{transform:translateY(-10px);opacity:0}100%{transform:none;opacity:1}}
+.cnum.sec{color:var(--rojo)}
+.tier.past{opacity:.42;border-color:#1c1c1c;background:#0a0a0a}
+.tier.past:hover{transform:none}
+.tier.past .pv{text-decoration:line-through;text-decoration-color:var(--rojo);text-decoration-thickness:3px;color:#67635e}
+.tier.past .flag{background:#242424;color:#9c9791}
+.pgen{display:inline-block;margin-top:18px;border:1px solid var(--rojo);color:var(--rojo);font-size:11px;font-weight:700;letter-spacing:.24em;padding:8px 12px}
+.closed{display:none;margin-top:22px;font-size:14px;font-weight:700;letter-spacing:.18em;color:var(--rojo)}
+@media (prefers-reduced-motion:reduce){.cdhead:before,.cnum.tk{animation:none}}
 
 /* ---------- stats band ---------- */
 .band{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;padding:42px 0;border-top:1px solid var(--linea);
@@ -217,14 +231,14 @@ footer{border-top:1px solid var(--linea);padding:40px 0;text-align:center;font-s
       <a href="#obra">OBRA</a>
       <a href="#inversion">INVERSIÓN</a>
     </div>
-    <a class="btn" href="https://wa.me/524491870292?text=Hola%20Emilio%2C%20quiero%20apartar%20mi%20lugar%20en%20el%20taller%20de%20ELCE%C3%89%20STUDIO" target="_blank">APARTAR LUGAR</a>
+    <a class="btn" href="https://wa.me/524493832300?text=Hola%2C%20quiero%20informes%20del%20curso%20de%20render%20arquitect%C3%B3nico%20de%20ELCE%C3%89%20STUDIO" target="_blank">APARTAR LUGAR</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <div class="herowrap"><div class="herobg" id="hbg"></div><div class="herofade"></div>
 <div class="wrap hero">
-  <div class="eyebrow">DESDE CERO · OCTUBRE 2026 · EN VIVO POR ZOOM</div>
+  <div class="eyebrow">CURSO DESDE CERO · 6 JUEVES · 7 A 10 PM · EN VIVO POR ZOOM</div>
   <div class="mark">ELCEÉ<br><span class="r">STUDIO</span></div>
   <div class="tagline">De cero a tu primera imagen<br>que <span class="r">vende.</span></div>
   <div class="stack">
@@ -232,24 +246,26 @@ footer{border-top:1px solid var(--linea);padding:40px 0;text-align:center;font-s
     <div class="chip">IA</div><div class="chip">PHOTOSHOP</div>
   </div>
   <div class="hero-cta">
-    <a class="btn" href="https://wa.me/524491870292?text=Hola%20Emilio%2C%20quiero%20apartar%20mi%20lugar%20en%20el%20taller%20de%20ELCE%C3%89%20STUDIO" target="_blank">APARTAR MI LUGAR · $1,000</a>
+    <a class="btn" href="https://wa.me/524493832300?text=Hola%2C%20quiero%20informes%20del%20curso%20de%20render%20arquitect%C3%B3nico%20de%20ELCE%C3%89%20STUDIO" target="_blank">APARTAR MI LUGAR · $1,000</a>
     <a class="btn btn-g" href="#programa">VER EL PROGRAMA</a>
   </div>
+  <div class="cdhead" id="cdh">ARRANCA EL JUEVES 15 DE OCTUBRE · 7 PM</div>
   <div class="counter" id="cd">
     <div class="cbox"><div class="cnum" id="d">—</div><div class="clbl">DÍAS</div></div>
     <div class="cbox"><div class="cnum" id="h">—</div><div class="clbl">HORAS</div></div>
     <div class="cbox"><div class="cnum" id="m">—</div><div class="clbl">MINUTOS</div></div>
-    <div class="cbox" style="min-width:210px"><div class="cnum r" style="font-size:19px;line-height:1.35;padding-top:8px">CIERRE DE<br>INSCRIPCIONES</div><div class="clbl">VIERNES 2 DE OCTUBRE</div></div>
+    <div class="cbox"><div class="cnum sec" id="s">—</div><div class="clbl">SEGUNDOS</div></div>
+    <div class="cbox" style="min-width:210px"><div class="cnum r" style="font-size:19px;line-height:1.35;padding-top:8px">CIERRE DE<br>INSCRIPCIONES</div><div class="clbl">MIÉRCOLES 14 DE OCTUBRE</div></div>
   </div>
 </div>
 </div>
 
 <div class="wrap">
   <div class="band reveal">
-    <div><div class="n r">12</div><div class="l">HORAS EN VIVO<br>4 SESIONES DE 3 H</div></div>
+    <div><div class="n r">18</div><div class="l">HORAS EN VIVO<br>6 JUEVES DE 3 H</div></div>
     <div><div class="n">15</div><div class="l">LUGARES<br>GRUPO CERRADO</div></div>
     <div><div class="n">0</div><div class="l">REQUISITOS PREVIOS<br>SE EMPIEZA DE CERO</div></div>
-    <div><div class="n r">1</div><div class="l">IMAGEN TERMINADA<br>HECHA POR TI</div></div>
+    <div><div class="n r">1</div><div class="l">PROYECTO DE CASA<br>DE PRINCIPIO A FIN</div></div>
   </div>
 </div>
 
@@ -272,8 +288,8 @@ footer{border-top:1px solid var(--linea);padding:40px 0;text-align:center;font-s
 
 <!-- PROGRAMA -->
 <section id="programa"><div class="wrap">
-  <div class="eyebrow">PROGRAMA · 4 SEMANAS</div>
-  <h2 class="reveal">CADA SEMANA<br>SALES CON <span class="r">ALGO HECHO.</span></h2>
+  <div class="eyebrow">PROGRAMA · 6 JUEVES · 15 OCT – 19 NOV</div>
+  <h2 class="reveal">CADA JUEVES<br>SALES CON <span class="r">ALGO HECHO.</span></h2>
   <div class="tabs" id="tabs"></div>
   <div id="panes"></div>
 </div></section>
@@ -298,37 +314,40 @@ footer{border-top:1px solid var(--linea);padding:40px 0;text-align:center;font-s
 <section id="inversion"><div class="wrap">
   <div class="eyebrow">INVERSIÓN</div>
   <h2 class="reveal">EL PRECIO SUBE<br>CONFORME SE <span class="r">LLENA.</span></h2>
-  <div class="ref">Valor de referencia $4,900 MXN</div>
-  <div class="tiers">
-    <div class="tier hot">
-      <div class="flag">6 LUGARES</div>
-      <div class="k">TARIFA FUNDADOR</div>
-      <div class="pv">$2,900</div>
-      <div class="pd">Primera generación. Vigente hasta el 22 de septiembre o hasta agotar lugares.</div>
+  <div class="pgen">PRECIO PRIMERA GENERACIÓN</div>
+  <div class="tiers" id="tiers">
+    <div class="tier" data-end="2026-09-30T23:59:59-06:00">
+      <div class="flag"></div>
+      <div class="k">EARLY · HASTA EL 30 SEP</div>
+      <div class="pv">$3,000</div>
+      <div class="pd">Hasta el miércoles 30 de septiembre. Mismos contenidos y entregables.</div>
       <div class="lug">MXN · POR PERSONA</div>
     </div>
-    <div class="tier">
-      <div class="k">PREVENTA</div>
+    <div class="tier" data-end="2026-10-07T23:59:59-06:00">
+      <div class="flag"></div>
+      <div class="k">PREVENTA · 1 AL 7 OCT</div>
       <div class="pv">$3,500</div>
-      <div class="pd">Del 23 al 30 de septiembre. Mismos contenidos y entregables.</div>
-      <div class="lug">6 LUGARES · MXN POR PERSONA</div>
+      <div class="pd">Del jueves 1 al miércoles 7 de octubre. Mismos contenidos y entregables.</div>
+      <div class="lug">MXN · POR PERSONA</div>
     </div>
-    <div class="tier">
-      <div class="k">ÚLTIMOS LUGARES</div>
-      <div class="pv">$3,900</div>
-      <div class="pd">1 y 2 de octubre. Cierre definitivo de inscripciones.</div>
-      <div class="lug">3 LUGARES · MXN POR PERSONA</div>
+    <div class="tier" data-end="2026-10-14T23:59:59-06:00">
+      <div class="flag"></div>
+      <div class="k">CIERRE · 8 AL 14 OCT</div>
+      <div class="pv">$4,250</div>
+      <div class="pd">Del jueves 8 al miércoles 14 de octubre. Cierre definitivo de inscripciones.</div>
+      <div class="lug">MXN · POR PERSONA</div>
     </div>
   </div>
+  <div class="closed" id="closed">INSCRIPCIONES CERRADAS PARA ESTA GENERACIÓN · ESCRÍBENOS PARA LA SIGUIENTE</div>
   <div class="paybar">
     <div><div class="k">APARTADO</div><div class="t">$1,000 MXN</div>
-      <div class="d">Asegura tu lugar y congela el precio de tu tramo. El resto se liquida antes del 2 de octubre.</div></div>
-    <div><div class="k">FORMA DE PAGO</div><div class="t">Solo transferencia</div>
-      <div class="d">Transferencia bancaria SPEI, único método de pago. Los datos se comparten al apartar tu lugar.</div></div>
+      <div class="d">Asegura tu lugar y congela el precio de tu tramo. El resto se liquida antes del 14 de octubre.</div></div>
+    <div><div class="k">CÓMO APARTAR</div><div class="t">Por WhatsApp</div>
+      <div class="d">Escríbenos al 449 383 2300 y te pasamos los detalles para apartar tu lugar.</div></div>
     <div><div class="k">TRAE A ALGUIEN</div><div class="t">Tarifa del tramo anterior</div>
       <div class="d">Si te inscribes con un compañero, ambos conservan la tarifa del tramo previo.</div></div>
   </div>
-  <div style="margin-top:36px"><a class="btn" href="https://wa.me/524491870292?text=Hola%20Emilio%2C%20quiero%20apartar%20mi%20lugar%20en%20el%20taller%20de%20ELCE%C3%89%20STUDIO" target="_blank">APARTAR MI LUGAR AHORA</a></div>
+  <div style="margin-top:36px"><a class="btn" href="https://wa.me/524493832300?text=Hola%2C%20quiero%20informes%20del%20curso%20de%20render%20arquitect%C3%B3nico%20de%20ELCE%C3%89%20STUDIO" target="_blank">APARTAR MI LUGAR AHORA</a></div>
 </div></section>
 
 <!-- FAQ -->
@@ -342,21 +361,21 @@ footer{border-top:1px solid var(--linea);padding:40px 0;text-align:center;font-s
 <div class="wrap close">
   <div class="emark"><i></i><i></i><i></i></div>
   <h2>QUIEN ENSEÑA,<br><span class="r">CONSTRUYE.</span></h2>
-  <p style="max-width:580px;margin:0 auto 26px">Sin requisitos previos. 15 lugares. En vivo por Zoom.<br>Arranca el sábado 3 de octubre.</p>
-  <p style="max-width:580px;margin:0 auto 32px;color:var(--crema);font-weight:700;letter-spacing:.06em">449 187 0292 · 449 383 2300<br>elcgrupoarqui@gmail.com</p>
-  <a class="btn" href="https://wa.me/524491870292?text=Hola%20Emilio%2C%20quiero%20apartar%20mi%20lugar%20en%20el%20taller%20de%20ELCE%C3%89%20STUDIO" target="_blank">APARTAR MI LUGAR</a>
+  <p style="max-width:580px;margin:0 auto 26px">Sin requisitos previos. 15 lugares. En vivo por Zoom.<br>Arranca el jueves 15 de octubre, de 7 a 10 pm.</p>
+  <p style="max-width:580px;margin:0 auto 32px;color:var(--crema);font-weight:700;letter-spacing:.06em">WHATSAPP 449 383 2300<br>elcgrupoarqui@gmail.com</p>
+  <a class="btn" href="https://wa.me/524493832300?text=Hola%2C%20quiero%20informes%20del%20curso%20de%20render%20arquitect%C3%B3nico%20de%20ELCE%C3%89%20STUDIO" target="_blank">APARTAR MI LUGAR</a>
 </div>
 
 <footer>
   ELCEÉ <span class="r">STUDIO</span> · ARQUITECTURA · CONSTRUCCIÓN · DISEÑO<br>
   <span style="color:#403d39">ARQ. EMILIO OCTAVIO LÓPEZ CARRASCO · AGUASCALIENTES, MÉXICO</span><br>
-  <span style="color:var(--crema);font-size:15px;letter-spacing:.12em;display:inline-block;margin-top:14px">449 187 0292 &nbsp;·&nbsp; 449 383 2300 &nbsp;·&nbsp; ELCGRUPOARQUI@GMAIL.COM</span><br>
-  <span style="color:#403d39">ELCEE-STUDIO.UP.RAILWAY.APP · @ELCEE_STUDIO</span><br>
+  <span style="color:var(--crema);font-size:15px;letter-spacing:.12em;display:inline-block;margin-top:14px">449 383 2300 &nbsp;·&nbsp; ELCGRUPOARQUI@GMAIL.COM</span><br>
+  <span style="color:#403d39">ELCEE.STUDIO · @ELCEE_STUDIO</span><br>
   <a href="index.html" style="display:inline-block;margin-top:20px;color:var(--crema);text-decoration:none;
      font-size:11px;font-weight:700;letter-spacing:.3em;border-bottom:1.5px solid var(--rojo);padding-bottom:5px">← VER EL ESTUDIO Y LOS PROYECTOS</a>
 </footer>
 
-<div class="sticky"><a href="https://wa.me/524491870292?text=Hola%20Emilio%2C%20quiero%20apartar%20mi%20lugar%20en%20el%20taller%20de%20ELCE%C3%89%20STUDIO" target="_blank">APARTAR MI LUGAR · 15 CUPOS</a></div>
+<div class="sticky"><a href="https://wa.me/524493832300?text=Hola%2C%20quiero%20informes%20del%20curso%20de%20render%20arquitect%C3%B3nico%20de%20ELCE%C3%89%20STUDIO" target="_blank">APARTAR MI LUGAR · 15 CUPOS</a></div>
 
 <div class="lb" id="lb"><div class="cl">&times;</div><img id="lbi" alt=""><div class="lc" id="lbc"></div></div>
 
@@ -369,38 +388,41 @@ const FLOW=[
  {t:"Photoshop · El acabado",d:"Capas y máscaras desde cero, color, atmósfera y corrección de verticales. Se cierra con el armado de lámina y cómo se cotiza el trabajo."}];
 
 const WEEKS=[
- {n:"SEMANA 01",f:"SÁB 3 OCT",t:"LA BASE LIMPIA",s:"De AutoCAD a un modelo que sí renderiza",
+ {n:"SESIÓN 01",f:"JUE 15 OCT",t:"AUTOCAD: LA BASE",s:"El plano de la casa, limpio y a escala",
   li:["AutoCAD desde cero: interfaz, comandos que sí se usan, capas y escala real",
       "Cómo se lee y se limpia un plano antes de modelar nada",
-      "Revit desde cero: niveles, muros, vanos, cubiertas y terreno",
+      "El plano base de la casa que vas a llevar hasta el render final"],
+  e:"Plano de la casa depurado y listo para modelar",f2:"Te llevas: acceso a la biblioteca de archivos y bloques CAD de ELCEÉ"},
+ {n:"SESIÓN 02",f:"JUE 22 OCT",t:"REVIT: EL MODELO",s:"De plano a un modelo que sí renderiza",
+  li:["Revit desde cero: niveles, muros, vanos, cubiertas y terreno",
       "Qué modelar y qué no cuando el objetivo es la imagen",
       "Exportar a D5 Render con sincronización en vivo"],
-  e:"Tu modelo, hecho por ti y abierto en D5",f2:"Te llevas: plantilla Revit ELCEÉ + plano base de práctica"},
- {n:"SEMANA 02",f:"SÁB 10 OCT",t:"LUZ, MATERIA Y CÁMARA",s:"D5 Render: de modelo gris a imagen creíble",
+  e:"Tu casa modelada por ti y abierta en D5",f2:"Te llevas: plantilla Revit ELCEÉ"},
+ {n:"SESIÓN 03",f:"JUE 29 OCT",t:"D5: LUZ Y MATERIA",s:"De modelo gris a imagen creíble",
   li:["D5 Render desde cero: interfaz, navegación y primera escena",
       "Materiales: qué hace que una imagen se vea cara y qué la delata",
-      "Iluminación diurna, atardecer y escena nocturna",
-      "Vegetación, gente y mobiliario: escala, densidad y criterio",
-      "Composición y cámara: altura de lente, encuadre y verticales"],
-  e:"Tus primeros dos renders: un exterior y un interior",f2:"Te llevas: biblioteca de materiales + presets de cámara e iluminación"},
- {n:"SEMANA 03",f:"SÁB 17 OCT",t:"IA CON CONTROL",s:"Acelerar sin perder el proyecto",
-  li:["Qué sí y qué no se le puede pedir a la IA en arquitectura",
-      "Generación de contexto, entorno y cielo sobre tu propio render",
-      "Variantes de fachada y materialidad para presentar opciones al cliente",
-      "Upscaling, recuperación de detalle y limpieza de artefactos",
-      "Trabajar con imagen base y control: no perder el diseño"],
-  e:"Render mejorado + dos variantes de materialidad",f2:"Te llevas: catálogo de prompts ELCEÉ por tipología"},
- {n:"SEMANA 04",f:"SÁB 24 OCT",t:"POSTPRODUCCIÓN Y COBRO",s:"Cerrar la imagen y cerrar la venta",
+      "Iluminación diurna, atardecer y escena nocturna"],
+  e:"Primera escena de la casa con materiales y luz",f2:"Te llevas: biblioteca de materiales D5"},
+ {n:"SESIÓN 04",f:"JUE 5 NOV",t:"D5: CÁMARA Y ESCENA",s:"Composición que vende",
+  li:["Vegetación, gente y mobiliario: escala, densidad y criterio",
+      "Composición y cámara: altura de lente, encuadre y verticales",
+      "Render exterior e interior de la casa"],
+  e:"Tus primeros dos renders: un exterior y un interior",f2:"Te llevas: presets de cámara e iluminación"},
+ {n:"SESIÓN 05",f:"JUE 12 NOV",t:"PHOTOSHOP + IA",s:"Postproducción con control",
   li:["Photoshop desde cero: capas, máscaras y ajustes que sí importan",
       "Curvas, color, contraste, atmósfera y corrección de verticales",
-      "Cielos, gente y retoque que se ve real",
+      "IA con imagen base: contexto, cielo, vegetación y variantes sin perder el diseño",
+      "Upscaling, recuperación de detalle y limpieza de artefactos"],
+  e:"Render postproducido + dos variantes de materialidad",f2:"Te llevas: acciones de Photoshop + catálogo de prompts ELCEÉ"},
+ {n:"SESIÓN 06",f:"JUE 19 NOV",t:"LÁMINA Y COBRO",s:"Cerrar la imagen y cerrar la venta",
+  li:["Cielos, gente y retoque que se ve real",
       "Armado de lámina: presentar para que aprueben, no para que opinen",
       "Cómo se cobra: rangos de mercado, paquetes, anticipos y revisiones"],
-  e:"Lámina de presentación terminada, lista para portafolio",f2:"Te llevas: acciones de Photoshop + plantilla de cotización de renders"}];
+  e:"Lámina de presentación de tu casa, lista para portafolio",f2:"Te llevas: plantilla de lámina + plantilla de cotización de renders"}];
 
 const GETS=[
- ["01","Grabación completa","Las 4 sesiones grabadas, disponibles seis meses. Si faltas, no pierdes la clase."],
- ["02","Paquete de archivos","Plantilla Revit, biblioteca de materiales D5, acciones de Photoshop y plantilla de lámina."],
+ ["01","Grabaciones incluidas","Las 6 sesiones grabadas. Si faltas, no pierdes la clase."],
+ ["02","Biblioteca de archivos y CAD","Acceso a la biblioteca de archivos y bloques CAD de ELCEÉ, más plantilla Revit, materiales D5, acciones de Photoshop y plantilla de lámina."],
  ["03","Catálogo de prompts","Prompts de IA probados en proyecto real, por tipología: residencial, comercial e interior."],
  ["04","Plantilla de cotización","El formato con el que se cobra un paquete de renders: alcance, revisiones y anticipos."],
  ["05","InDesign para portafolio","Curso grabado de una hora, incluido. Maquetación de portafolio profesional desde cero."],
@@ -410,12 +432,12 @@ const GETS=[
 
 const FAQ=[
  ["¿Necesito saber algo de antes?","No. El taller arranca desde cero: cada programa se abre desde la interfaz. Si nunca has tocado Revit o D5, este es tu lugar."],
- ["¿Voy a salir siendo experto en los cinco programas?","No. La meta es el nivel básico: sales con las bases de los cinco programas y con una imagen terminada por ti. Dominarlos toma años, no doce horas."],
+ ["¿Voy a salir siendo experto en los cinco programas?","No. La meta es el nivel básico: sales con las bases de los cinco programas y con una imagen terminada por ti. Dominarlos toma años, no dieciocho horas."],
  ["¿Incluye las licencias de los programas?","No. Cada participante los instala por su cuenta, pero se envía la guía paso a paso para dejarlos corriendo antes de la sesión 01."],
  ["¿Qué equipo necesito?","Computadora con tarjeta de video dedicada para correr D5 con fluidez y conexión estable. Al inscribirte recibes la guía paso a paso para instalar los cinco programas."],
- ["¿Y si falto a una sesión?","La grabación queda el mismo día y está disponible seis meses. No pierdes contenido."],
- ["¿Es presencial?","No. Es en vivo por Zoom, sábados de 10:00 a 13:00, durante cuatro semanas."],
- ["¿Puedo pagar con tarjeta o a meses?","No. El pago es únicamente por transferencia bancaria. Apartas con $1,000 y liquidas el resto antes del 2 de octubre."],
+ ["¿Y si falto a una sesión?","Las grabaciones están incluidas. No pierdes contenido."],
+ ["¿Es presencial?","No. Es en vivo por Zoom, seis jueves de 7 a 10 pm: 15, 22 y 29 de octubre; 5, 12 y 19 de noviembre."],
+ ["¿Cómo aparto mi lugar?","Escríbenos por WhatsApp al 449 383 2300 y te pasamos los detalles. Apartas con $1,000 y liquidas el resto antes del 14 de octubre."],
  ["¿Dan factura?","Sí, se expide factura."]];
 
 const GAL=[{"u": "img/taller/casa-en-ladera.jpg", "t": "CASA EN LADERA", "s": "RESIDENCIAL · VISTA A LA CIUDAD"}, {"u": "img/taller/patio-y-cafeteria.jpg", "t": "PATIO Y CAFETERÍA", "s": "COMERCIAL"}, {"u": "img/taller/casa-panorama-203.jpg", "t": "CASA PANORAMA 203", "s": "RESIDENCIAL · AGUASCALIENTES"}, {"u": "img/taller/biblioteca-madero.jpg", "t": "BIBLIOTECA MADERO", "s": "CULTURAL · INTERIOR"}, {"u": "img/taller/bano-concreto-y-celosia.jpg", "t": "BAÑO · CONCRETO Y CELOSÍA", "s": "RESIDENCIAL"}, {"u": "img/taller/cafeteria.jpg", "t": "CAFETERÍA", "s": "ESCENA NOCTURNA"}, {"u": "img/taller/conjunto-institucional.jpg", "t": "CONJUNTO INSTITUCIONAL", "s": "FACHADA · GRAN ESCALA"}, {"u": "img/taller/bano-principal.jpg", "t": "BAÑO PRINCIPAL", "s": "RESIDENCIAL · LUZ FILTRADA"}, {"u": "img/taller/sala-de-juegos.jpg", "t": "SALA DE JUEGOS", "s": "DOBLE ALTURA"}, {"u": "img/taller/departamento.jpg", "t": "DEPARTAMENTO", "s": "INTERIOR NOCTURNO"}, {"u": "img/taller/edificio-corporativo.jpg", "t": "EDIFICIO CORPORATIVO", "s": "FACHADA"}];
@@ -441,7 +463,7 @@ WEEKS.forEach((w,i)=>{
   p.className='pane'+(i===0?' on':''); p.dataset.i=i;
   p.innerHTML='<div><div style="font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--rojo)">'+w.n+' · '+w.f+
     '</div><h3>'+w.t+'</h3><div class="sub">'+w.s+'</div><ul>'+w.li.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'+
-    '<div class="deliv"><div class="l">ENTREGABLE DE LA SEMANA</div><div class="v">'+w.e+'</div><div class="f">'+w.f2+'</div></div>';
+    '<div class="deliv"><div class="l">ENTREGABLE DE LA SESIÓN</div><div class="v">'+w.e+'</div><div class="f">'+w.f2+'</div></div>';
   panes.appendChild(p);
 });
 tabs.addEventListener('click',e=>{
@@ -478,17 +500,31 @@ FAQ.forEach(f=>{
   faq.appendChild(d);
 });
 
-/* contador */
-const END=new Date('2026-10-02T23:59:00-06:00').getTime();
+/* contador al inicio del curso */
+const START=new Date('2026-10-15T19:00:00-06:00').getTime();
+const setN=(id,v)=>{const e=document.getElementById(id);const t=String(v);if(e.textContent!==t){e.textContent=t;e.classList.remove('tk');void e.offsetWidth;e.classList.add('tk');}};
 function tick(){
-  const t=END-Date.now();
-  if(t<=0){document.getElementById('d').textContent='0';document.getElementById('h').textContent='0';
-    document.getElementById('m').textContent='0';return;}
-  document.getElementById('d').textContent=Math.floor(t/864e5);
-  document.getElementById('h').textContent=Math.floor(t/36e5)%24;
-  document.getElementById('m').textContent=Math.floor(t/6e4)%60;
+  const t=START-Date.now();
+  if(t<=0){['d','h','m','s'].forEach(i=>setN(i,0));document.getElementById('cdh').textContent='EL CURSO YA ARRANCÓ';return;}
+  setN('d',Math.floor(t/864e5));setN('h',Math.floor(t/36e5)%24);
+  setN('m',Math.floor(t/6e4)%60);setN('s',Math.floor(t/1e3)%60);
 }
-tick(); setInterval(tick,30000);
+tick(); setInterval(tick,1000);
+
+/* tramos: se tachan solos al pasar su fecha */
+function tiers(){
+  const now=Date.now(); let cur=null;
+  document.querySelectorAll('#tiers .tier').forEach(el=>{
+    const end=new Date(el.dataset.end).getTime(); const f=el.querySelector('.flag');
+    el.classList.remove('hot','past');
+    if(now>end){el.classList.add('past');f.textContent='VENCIDO';}
+    else if(!cur){cur=el;el.classList.add('hot');f.textContent='PRECIO ACTUAL';}
+    else{f.textContent='';f.style.display='none';}
+    if(el.classList.contains('hot')||el.classList.contains('past'))f.style.display='';
+  });
+  document.getElementById('closed').style.display=cur?'none':'block';
+}
+tiers(); setInterval(tiers,60000);
 
 /* reveal */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.14});
