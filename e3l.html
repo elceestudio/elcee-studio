@@ -28,17 +28,90 @@ nav a:hover {opacity:.65}
 .process-diagram{grid-template-columns:1fr;max-width:900px;gap:0}.diagram-step{min-height:170px}.diagram-step:after{bottom:0}.diagram-step:nth-child(3):after{display:block}.diagram-step:last-child:after{display:none}
 
 .e3l-site .site-tabs{font-weight:bold;font-size:12px;letter-spacing:.05em}.site-tabs a[aria-current]{border-bottom:2px solid var(--blue)}.e3l-site .section-nav{width:100%;justify-content:flex-end}@media(max-width:700px){
-@media(max-width:700px){.e3l-site .site-tabs{width:auto;gap:14px;font-size:10px}.e3l-site .site-tabs a:first-child{display:block}.e3l-site .section-nav{gap:18px}.e3l-site .section-nav a:first-child{display:block}}body{margin:0}</style></head><body><div class="e3l-site">
+@media(max-width:700px){.e3l-site .site-tabs{width:auto;gap:14px;font-size:10px}.e3l-site .site-tabs a:first-child{display:block}.e3l-site .section-nav{gap:18px}.e3l-site .section-nav a:first-child{display:block}}body{margin:0}</style><style id="e3l-motion-css">
+/* ===== E3L · animaciones (rama feat/e3l-animaciones) ===== */
+@keyframes e3l-line{from{transform:translateY(105%)}to{transform:none}}
+@keyframes e3l-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes e3l-fill{from{fill-opacity:0}to{fill-opacity:1}}
+@keyframes e3l-bar{from{transform:scaleX(0)}to{transform:none}}
+@keyframes e3l-turn{from{transform:rotate(-90deg)}to{transform:none}}
+@keyframes e3l-turn2{from{transform:rotate(90deg)}to{transform:none}}
+@keyframes e3l-pop{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+
+/* Hero: dos columnas (texto + impresora) */
+.e3l-site .hero{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);max-width:none}
+.e3l-mark{display:block;width:52px;height:52px;margin:0 0 22px;overflow:visible}
+.e3l-mark .m-box{fill:var(--blue);stroke:var(--blue);stroke-width:3;stroke-dasharray:1;animation:e3l-draw .7s cubic-bezier(.65,0,.35,1) both,e3l-fill .35s .6s ease-out both}
+.e3l-mark .m-bar{fill:#fff;transform-box:fill-box;transform-origin:left center;animation:e3l-bar .45s cubic-bezier(.2,.7,.2,1) .8s both}
+.e3l-mark .m-bar:nth-of-type(3){animation-delay:.92s}.e3l-mark .m-bar:nth-of-type(4){animation-delay:1.04s}
+.hero h1{animation:none}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
+.hero h1 .ln>span{display:block;animation:e3l-line .9s cubic-bezier(.2,.7,.2,1) .15s both}
+.hero h1 .ln:nth-child(2)>span{animation-delay:.27s}.hero h1 .ln:nth-child(3)>span{animation-delay:.39s}
+.hero .intro{animation-delay:.6s}.hero .cta{animation-delay:.72s}.hero .small{animation-delay:.84s}
+.e3l-printer{width:100%;max-width:470px;justify-self:center;animation:e3l-pop .9s cubic-bezier(.2,.7,.2,1) .2s both}
+.e3l-printer svg{display:block;width:100%;height:auto;overflow:visible}
+.e3l-printer .pr-line{fill:none;stroke:var(--blue);stroke-width:2;stroke-linejoin:round}
+.e3l-printer .pr-solid{fill:#fff;stroke:var(--blue);stroke-width:2;stroke-linejoin:round}
+.e3l-printer .pr-pale{fill:var(--pale);stroke:var(--blue);stroke-width:2}
+.e3l-printer .pr-blue{fill:var(--blue)}
+.e3l-printer .pr-tip{fill:#6f93ff;transition:opacity .2s}
+@media(max-width:900px){.e3l-site .hero{grid-template-columns:1fr}.e3l-printer{max-width:360px}}
+
+/* Taller: rejilla de cama + piezas en línea */
+#servicios{position:relative;isolation:isolate}
+#servicios:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(#e9eef8 1px,transparent 1px),linear-gradient(90deg,#e9eef8 1px,transparent 1px);background-size:40px 40px;background-position:-1px -1px;-webkit-mask-image:linear-gradient(180deg,transparent,#000 25%,#000 75%,transparent);mask-image:linear-gradient(180deg,transparent,#000 25%,#000 75%,transparent)}
+.e3l-motion #servicios:before{clip-path:inset(0 100% 0 0);transition:clip-path 1.6s cubic-bezier(.65,0,.35,1)}
+.e3l-motion #servicios.is-on:before{clip-path:inset(0 0 0 0)}
+.tw{display:block;width:84px;height:84px;margin:0 0 12px;overflow:visible;fill:none;stroke:var(--blue);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.tw .hid{stroke-opacity:.3}
+.e3l-motion .tw path{stroke-dasharray:1;stroke-dashoffset:1}
+
+/* Materiales: capas que se depositan + línea de extrusión */
+#materiales .strip span{position:relative}
+#materiales .strip span:after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:2px;background:var(--blue);transform-origin:left center}
+#materiales .strip span:nth-child(2){--i:1}#materiales .strip span:nth-child(3){--i:2}#materiales .strip span:nth-child(4){--i:3}
+.e3l-motion #materiales .strip span{clip-path:inset(100% 0 0 0);transition:clip-path .8s steps(8,end) calc(var(--i,0)*.16s)}
+.e3l-motion #materiales .strip span:after{transform:scaleX(0);transition:transform .9s cubic-bezier(.65,0,.35,1) calc(var(--i,0)*.16s + .55s)}
+.e3l-motion #materiales.is-on .strip span{clip-path:inset(-2px -2px -12px -2px)}
+.e3l-motion #materiales.is-on .strip span:after{transform:none}
+
+/* Catálogo: solo aparición suave (clase temporal, sin tocar el CSS de las tarjetas) */
+.e3l-fade{opacity:0;transform:translateY(16px);transition:opacity .9s cubic-bezier(.215,.61,.355,1) calc(var(--i,0)*.12s),transform .9s cubic-bezier(.215,.61,.355,1) calc(var(--i,0)*.12s)}
+.e3l-fade.is-in{opacity:1;transform:none}
+
+/* Proceso: línea que se dibuja con el scroll y pasos que se encienden */
+.e3l-motion .diagram-step:before{content:"";position:absolute;width:2px;background:var(--blue);top:100px;bottom:0;left:37px;z-index:1;transform-origin:top;transform:scaleY(var(--p,0))}
+.e3l-motion .diagram-step:last-child:before{display:none}
+.e3l-motion .diagram-step .diagram-icon{transition:border-color .5s ease,background-color .5s ease;border-color:#cfdaf3}
+.e3l-motion .diagram-step .diagram-icon path{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.1s cubic-bezier(.65,0,.35,1) .15s}
+.e3l-motion .diagram-step>div:not(.diagram-icon){opacity:0;transform:translateY(16px);transition:opacity .6s ease .1s,transform .7s cubic-bezier(.2,.7,.2,1) .1s}
+.e3l-motion .diagram-step.lit .diagram-icon{border-color:var(--blue)}
+.e3l-motion .diagram-step.lit .diagram-icon path{stroke-dashoffset:0}
+.e3l-motion .diagram-step.lit>div:not(.diagram-icon){opacity:1;transform:none}
+@media(max-width:700px){.e3l-motion .diagram-step:before{top:84px;left:26px}}
+
+/* Preguntas: entrada en cascada + acordeón animado */
+.faq-list details:nth-child(2){--i:1}.faq-list details:nth-child(3){--i:2}.faq-list details:nth-child(4){--i:3}
+.e3l-motion .faq-list details{opacity:0;transform:translateY(16px);transition:opacity .6s ease calc(var(--i,0)*.1s),transform .7s cubic-bezier(.2,.7,.2,1) calc(var(--i,0)*.1s)}
+.e3l-motion .faq-list.is-on details{opacity:1;transform:none}
+.faq-list summary:after{transition:transform .3s ease}
+.faq-list details.turn[open] summary:after{animation:e3l-turn .35s cubic-bezier(.2,.7,.2,1)}
+.faq-list details.turn:not([open]) summary:after{animation:e3l-turn2 .35s cubic-bezier(.2,.7,.2,1)}
+.faq-list details[open] p{animation:e3l-pop .45s ease-out .05s both}
+
+@media(prefers-reduced-motion:reduce){.e3l-printer,.e3l-mark *,.hero h1 .ln>span{animation:none !important}}
+</style><script>if(!matchMedia('(prefers-reduced-motion:reduce)').matches)document.documentElement.classList.add('e3l-motion')</script></head><body><div class="e3l-site">
 
 <div class="wrap"><header><a href="#inicio" aria-label="E3L, inicio" style="text-decoration:none"><span class="logo">E3L</span><span class="family">ELCEÉ 3D LAB</span></a><nav class="site-tabs" aria-label="Sitios"><a href="index.html">ESTUDIO</a><a href="taller.html">TALLER</a><a href="e3l.html" aria-current="page">E3L</a></nav><nav class="section-nav" aria-label="Navegación principal"><a href="#servicios">El taller</a><a href="#catalogo">Catálogo</a><a href="#proceso">Proceso</a><a href="#cotiza">Cotiza</a></nav></header>
-<main><div class="hero" id="inicio"><div><p class="eyebrow">Impresión 3D · Aguascalientes</p><h1>Tu idea.<br />En tus<br />manos.</h1><p class="intro">Del archivo a la pieza. Cuéntanos qué quieres imprimir y revisamos tu proyecto.</p><a class="cta" href="#cotiza">Hablemos de tu pieza</a><p class="small">Una idea, una referencia o un archivo. Empezamos por ahí.</p></div></div>
+<main><div class="hero" id="inicio"><div><svg class="e3l-mark" viewBox="0 0 64 64" aria-hidden="true"><path class="m-box" pathLength="1" d="M9.5 1.5h45a8 8 0 0 1 8 8v45a8 8 0 0 1-8 8h-45a8 8 0 0 1-8-8v-45a8 8 0 0 1 8-8z"/><rect class="m-bar" x="18" y="18" width="14" height="7"/><rect class="m-bar" x="18" y="28" width="20" height="7"/><rect class="m-bar" x="18" y="38" width="28" height="7"/></svg><p class="eyebrow">Impresión 3D · Aguascalientes</p><h1><span class="ln"><span>Tu idea.</span></span><span class="ln"><span>En tus</span></span><span class="ln"><span>manos.</span></span></h1><p class="intro">Del archivo a la pieza. Cuéntanos qué quieres imprimir y revisamos tu proyecto.</p><a class="cta" href="#cotiza">Hablemos de tu pieza</a><p class="small">Una idea, una referencia o un archivo. Empezamos por ahí.</p></div><div class="e3l-printer" aria-hidden="true"><svg viewBox="0 0 400 320" focusable="false"><defs><pattern id="e3l-lyr" x="0" y="262" width="8" height="2.43" patternUnits="userSpaceOnUse"><rect width="8" height="2.43" fill="#1646C7"/><rect y="1.93" width="8" height=".5" fill="#4d74dd"/></pattern><clipPath id="e3l-clip"><rect id="pc-done" x="40" y="210" width="320" height="52"/><rect id="pc-cur" x="0" y="0" width="0" height="0"/></clipPath><clipPath id="e3l-hot"><rect id="pc-hot" x="0" y="0" width="0" height="0"/></clipPath></defs><rect class="pr-line" x="22" y="22" width="10" height="270"/><rect class="pr-line" x="368" y="22" width="10" height="270"/><rect class="pr-solid" x="16" y="16" width="368" height="14"/><rect class="pr-solid" x="12" y="292" width="376" height="12"/><path class="pr-line" d="M30 304v8h22v-8 M348 304v8h22v-8"/><rect class="pr-pale" x="44" y="262" width="312" height="9"/><path class="pr-line" d="M120 271v21 M280 271v21"/><g id="pr-word"><g clip-path="url(#e3l-clip)"><text x="200" y="262" text-anchor="middle" textLength="290" lengthAdjust="spacingAndGlyphs" font-family="Arial,Helvetica,sans-serif" font-size="68" font-weight="700" fill="url(#e3l-lyr)">IMPRIME</text></g><g clip-path="url(#e3l-hot)"><text x="200" y="262" text-anchor="middle" textLength="290" lengthAdjust="spacingAndGlyphs" font-family="Arial,Helvetica,sans-serif" font-size="68" font-weight="700" fill="#6f93ff">IMPRIME</text></g></g><g id="pr-gantry" transform="translate(0 96)"><rect class="pr-solid" x="32" y="-31" width="336" height="9"/></g><g id="pr-head" transform="translate(310 96)"><rect class="pr-solid" x="-19" y="-44" width="38" height="30"/><circle class="pr-line" cx="0" cy="-29" r="8"/><path class="pr-line" d="M-4 -29h8 M0 -33v8"/><rect class="pr-blue" x="-8" y="-14" width="16" height="7"/><path class="pr-blue" d="M-5 -7h10l-3.5 6h-3z"/><circle id="pr-tip" class="pr-tip" cx="0" cy="0" r="2.4" opacity="0"/></g></svg></div></div>
 <div class="strip"><span>ELCEÉ 3D LAB</span><span>DEL ARCHIVO A LA PIEZA</span><span>EST · 2026</span></div>
-<section id="servicios"><p class="eyebrow">01 / El taller</p><h2>De lo que imaginas<br />a lo que sostienes.</h2><div class="grid"><article class="service"><span class="num">01</span><h3>Impresión FDM</h3><p>Lleva tu archivo a una pieza física. Material, dimensiones y acabado se revisan con tu proyecto.</p></article><article class="service"><span class="num">02</span><h3>Modelado 3D</h3><p>¿Todavía no tienes archivo? Comparte tu idea o referencia para revisar qué trabajo de modelado requiere.</p></article></div></section>
+<section id="servicios"><p class="eyebrow">01 / El taller</p><h2>De lo que imaginas<br />a lo que sostienes.</h2><div class="grid"><article class="service"><svg class="tw" viewBox="0 0 96 96" aria-hidden="true"><path pathLength="1" d="M10 86h76"/><path pathLength="1" d="M31.9 80.0a16.1 3.6 0 1 0 32.2 0a16.1 3.6 0 1 0 -32.2 0"/><path pathLength="1" d="M29.3 72.6a18.7 3.6 0 1 0 37.4 0a18.7 3.6 0 1 0 -37.4 0"/><path pathLength="1" d="M27.3 65.2a20.7 3.6 0 1 0 41.3 0a20.7 3.6 0 1 0 -41.3 0"/><path pathLength="1" d="M26.2 57.8a21.8 3.6 0 1 0 43.6 0a21.8 3.6 0 1 0 -43.6 0"/><path pathLength="1" d="M26.1 50.4a21.9 3.6 0 1 0 43.9 0a21.9 3.6 0 1 0 -43.9 0"/><path pathLength="1" d="M26.9 43.0a21.1 3.6 0 1 0 42.2 0a21.1 3.6 0 1 0 -42.2 0"/><path pathLength="1" d="M28.6 35.6a19.4 3.6 0 1 0 38.8 0a19.4 3.6 0 1 0 -38.8 0"/><path pathLength="1" d="M31.0 28.2a17.0 3.6 0 1 0 33.9 0a17.0 3.6 0 1 0 -33.9 0"/><path pathLength="1" d="M33.9 20.8a14.1 3.6 0 1 0 28.2 0a14.1 3.6 0 1 0 -28.2 0"/><path pathLength="1" d="M31.9 80.0 L29.3 72.6 L27.3 65.2 L26.2 57.8 L26.1 50.4 L26.9 43.0 L28.6 35.6 L31.0 28.2 L33.9 20.8"/><path pathLength="1" d="M64.1 80.0 L66.7 72.6 L68.7 65.2 L69.8 57.8 L69.9 50.4 L69.1 43.0 L67.4 35.6 L65.0 28.2 L62.1 20.8"/></svg><span class="num">01</span><h3>Impresión FDM</h3><p>Lleva tu archivo a una pieza física. Material, dimensiones y acabado se revisan con tu proyecto.</p></article><article class="service"><svg class="tw" viewBox="0 0 96 96" aria-hidden="true"><path pathLength="1" d="M22 29L48 14"/><path pathLength="1" d="M48 14L74 29"/><path pathLength="1" d="M74 29L48 44"/><path pathLength="1" d="M48 44L22 29"/><path pathLength="1" d="M22 29L22 65"/><path pathLength="1" d="M48 44L48 80"/><path pathLength="1" d="M74 29L74 65"/><path pathLength="1" d="M22 65L48 80"/><path pathLength="1" d="M48 80L74 65"/><path pathLength="1" class="hid" d="M48 14L48 50"/><path pathLength="1" class="hid" d="M22 65L48 50"/><path pathLength="1" class="hid" d="M48 50L74 65"/></svg><span class="num">02</span><h3>Modelado 3D</h3><p>¿Todavía no tienes archivo? Comparte tu idea o referencia para revisar qué trabajo de modelado requiere.</p></article></div></section>
 <section id="materiales"><p class="eyebrow">Materiales</p><h2>El material cambia.<br />La idea toma forma.</h2><div class="strip"><span>PLA</span><span>PETG</span><span>TPU</span><span>ABS</span></div><p>Trabajamos con los materiales que Anycubic especifica para la Kobra Plus: PLA, PETG, TPU y ABS. Revisamos el material y las condiciones de impresión según el uso de tu pieza.</p><p class="small">Colores, disponibilidad y alcance se confirman al cotizar.</p></section><section id="catalogo"><p class="eyebrow">Catálogo</p><h2>Piezas y productos<br />hechos en E3L.</h2><div class="cat-grid"><article class="cat-card"><a href="catalogos/1-e3l-catalogo-piezas.pdf" target="_blank" rel="noopener noreferrer"><img src="catalogos/3-portada-catalogo.jpg" alt="Portada del catálogo de piezas personalizadas E3L" loading="lazy" /></a><h3>Catálogo de piezas personalizadas</h3><p>Para eventos, bares, antros y restaurantes. 5 páginas.</p><a class="cat-link" href="catalogos/1-e3l-catalogo-piezas.pdf" target="_blank" rel="noopener noreferrer">Ver catálogo (PDF)</a></article><article class="cat-card"><a href="catalogos/2-e3l-displays-nfc.pdf" target="_blank" rel="noopener noreferrer"><img src="catalogos/4-portada-displays.jpg" alt="Display con tap NFC E3L" loading="lazy" /></a><h3>20 displays con tap NFC</h3><p>Modelos propios en PLA blanco impreso, con chip NFC. 11 páginas.</p><a class="cat-link" href="catalogos/2-e3l-displays-nfc.pdf" target="_blank" rel="noopener noreferrer">Ver displays (PDF)</a></article></div><style>.cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px;align-items:stretch}.cat-card{border-top:3px solid var(--blue);padding-top:18px;display:flex;flex-direction:column}.cat-card>a:first-child{display:block}.cat-card img{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:center;display:block;border:1px solid #dce3ee;margin:0 0 14px}.cat-card h3{margin:0 0 10px}.cat-card p{margin:0 0 12px}.cat-link{display:inline-block;margin-top:auto;align-self:flex-start;color:var(--blue);font-weight:bold;text-decoration:none;border-bottom:2px solid var(--blue);padding-bottom:2px}@media(max-width:700px){.cat-grid{grid-template-columns:1fr}}</style></section><section id="proceso"><p class="eyebrow">02 / Del archivo a la pieza</p><h2>Tu impresión,<br />en 4 pasos.</h2><div class="process-diagram">
-<article class="diagram-step"><div class="diagram-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M16 8h24l10 10v38H16z M40 8v12h10 M24 30h18 M24 40h18"/></svg></div><div><span class="num">01</span><h3>Envía tu archivo final.</h3><p>El modelo 3D que quieres imprimir. Comparte también medidas, cantidad y uso de la pieza.</p></div></article>
-<article class="diagram-step"><div class="diagram-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M13 8h38v48H13z M22 19h20 M21 30h7v7h-7z M35 33h8 M21 46h22"/></svg></div><div><span class="num">02</span><h3>Cotizamos y configuramos.</h3><p>Revisamos tu modelo y tus necesidades. Te cotizamos, indicamos el tiempo estimado y revisamos la configuración de impresión.</p></div></article>
-<article class="diagram-step"><div class="diagram-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M9 11h46v44H9z M32 11v10 M24 21h16v8H24z M15 47h34 M21 39h22v8H21z M27 34h10"/></svg></div><div><span class="num">03</span><h3>Imprimimos.</h3><p>Con la cotización aprobada, configuramos la impresora e iniciamos la impresión.</p></div></article>
-<article class="diagram-step"><div class="diagram-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8l23 13v28L32 62 9 49V21z M9 21l23 14 23-14 M32 35v27"/></svg></div><div><span class="num">04</span><h3>Tu pieza está impresa.</h3><p>Del modelo digital a una pieza física. Listo para sostener tu idea.</p></div></article>
+<article class="diagram-step"><div class="diagram-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path pathLength="1" d="M16 8h24l10 10v38H16z M40 8v12h10 M24 30h18 M24 40h18"/></svg></div><div><span class="num">01</span><h3>Envía tu archivo final.</h3><p>El modelo 3D que quieres imprimir. Comparte también medidas, cantidad y uso de la pieza.</p></div></article>
+<article class="diagram-step"><div class="diagram-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path pathLength="1" d="M13 8h38v48H13z M22 19h20 M21 30h7v7h-7z M35 33h8 M21 46h22"/></svg></div><div><span class="num">02</span><h3>Cotizamos y configuramos.</h3><p>Revisamos tu modelo y tus necesidades. Te cotizamos, indicamos el tiempo estimado y revisamos la configuración de impresión.</p></div></article>
+<article class="diagram-step"><div class="diagram-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path pathLength="1" d="M9 11h46v44H9z M32 11v10 M24 21h16v8H24z M15 47h34 M21 39h22v8H21z M27 34h10"/></svg></div><div><span class="num">03</span><h3>Imprimimos.</h3><p>Con la cotización aprobada, configuramos la impresora e iniciamos la impresión.</p></div></article>
+<article class="diagram-step"><div class="diagram-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path pathLength="1" d="M32 8l23 13v28L32 62 9 49V21z M9 21l23 14 23-14 M32 35v27"/></svg></div><div><span class="num">04</span><h3>Tu pieza está impresa.</h3><p>Del modelo digital a una pieza física. Listo para sostener tu idea.</p></div></article>
 </div><p class="small process-note">¿Aún no tienes un archivo? Primero revisamos tu idea o referencia y el trabajo de modelado que requiere.</p></section>
 <section id="preguntas"><p class="eyebrow">03 / Antes de imprimir</p><h2>Lo que conviene<br />tener claro.</h2><div class="faq-list">
 <details><summary>¿Puedo cotizar si aún no tengo modelo 3D?</summary><p>Sí. Comparte tu idea o una referencia para revisar qué trabajo de modelado necesita.</p></details>
@@ -47,4 +120,100 @@ nav a:hover {opacity:.65}
 <details><summary>¿Cuánto cuesta y cuánto tarda?</summary><p>Depende del proyecto. El precio y el tiempo estimado se confirman con la cotización, antes de iniciar la impresión.</p></details>
 </div></section>
 <section id="cotiza"><div class="quote"><div><p class="eyebrow">04 / Tu siguiente pieza</p><h2>¿Qué quieres<br />imprimir?</h2><p>Prepara estos datos para conversar sobre tu proyecto.</p><ul><li>Archivo o referencia</li><li>Medidas y cantidad</li><li>Uso de la pieza</li><li>Fecha en que la necesitas</li></ul></div><div><a class="cta" href="https://wa.me/524493832300?text=Hola%2C+quiero+cotizar+una+impresi%C3%B3n+3D" target="_blank" rel="noopener noreferrer">Cotizar por WhatsApp</a><p class="contact">449 383 2300</p><p class="small" id="contact-note">Abre WhatsApp para conversar sobre tu proyecto. Tú eliges cuándo enviar el mensaje.</p></div></div></section></main>
-<footer><span>E3L / ELCEÉ 3D LAB · EST · 2026</span><span>ELCEÉ 3D LAB · Aguascalientes.</span></footer></div></div><script>const nodes=Array.from(document.querySelectorAll('section p,section h2,section h3,section li,section strong,.diagram-step'));if(!matchMedia('(prefers-reduced-motion:reduce)').matches){nodes.forEach(n=>n.classList.add('scroll-reveal'));const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-revealed');io.unobserve(e.target)}}),{threshold:.15});nodes.forEach(n=>io.observe(n));}</script></body></html>
+<footer><span>E3L / ELCEÉ 3D LAB · EST · 2026</span><span>ELCEÉ 3D LAB · Aguascalientes.</span></footer></div></div><script>
+(function(){
+var motion=document.documentElement.classList.contains('e3l-motion');
+var $=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+var clamp=function(v){return v<0?0:v>1?1:v};
+
+/* Aparición genérica de textos (la que ya existía), sin duplicar las zonas con animación propia */
+var nodes=$('section p,section h2,section h3,section li,section strong').filter(function(n){return !n.closest('.cat-card,.diagram-step,.faq-list')});
+if(!motion)return;
+nodes.forEach(function(n){n.classList.add('scroll-reveal')});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add(e.target.matches('.scroll-reveal')?'is-revealed':e.target.matches('.e3l-fade')?'is-in':'is-on');io.unobserve(e.target)}})},{threshold:.15});
+nodes.forEach(function(n){io.observe(n)});
+
+/* Taller, materiales y preguntas: se activan al entrar */
+['#servicios','#materiales','.faq-list'].forEach(function(s){var el=document.querySelector(s);if(el)io.observe(el)});
+
+/* Catálogo: solo aparición suave por tarjeta */
+$('#catalogo .cat-card').forEach(function(c,i){c.classList.add('e3l-fade');c.style.setProperty('--i',i);io.observe(c)});
+
+/* Impresora del hero: imprime IMPRIME capa por capa */
+(function(){
+  var svg=document.querySelector('.e3l-printer svg');if(!svg)return;
+  var g=function(id){return document.getElementById(id)};
+  var done=g('pc-done'),cur=g('pc-cur'),hot=g('pc-hot'),gan=g('pr-gantry'),head=g('pr-head'),word=g('pr-word'),tip=g('pr-tip');
+  var X0=55,X1=345,B=262,T=210,N=21,LH=(B-T)/N,L=190,PRINT=N*L,APP=800,PARK=900,HOLD=2800,FADE=600,PX=310,PY=96;
+  var CYC=APP+PRINT+PARK+HOLD+FADE;
+  function r(el,x,y,w,h){el.setAttribute('x',x);el.setAttribute('y',y);el.setAttribute('width',w>0?w:0);el.setAttribute('height',h>0?h:0)}
+  function pos(x,y){head.setAttribute('transform','translate('+x.toFixed(1)+' '+y.toFixed(1)+')');gan.setAttribute('transform','translate(0 '+y.toFixed(1)+')')}
+  function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}
+  function frame(t){
+    var op=1,on=0;
+    if(t<APP){var k=ease(t/APP);pos(PX+(X0-PX)*k,PY+(B-LH-PY)*k);r(done,40,B,320,0);r(cur,0,0,0,0);r(hot,0,0,0,0)}
+    else if(t<APP+PRINT){
+      var u=t-APP,i=Math.floor(u/L),f=(u%L)/L,fe=.5-.5*Math.cos(Math.PI*f),ltr=i%2===0;
+      var hx=ltr?X0+(X1-X0)*fe:X1-(X1-X0)*fe,y=B-(i+1)*LH;
+      r(done,40,B-i*LH,320,i*LH+.4);
+      var cx=ltr?X0-10:hx,cw=ltr?hx-(X0-10):(X1+10)-hx;
+      r(cur,cx,y,cw,LH+.4);r(hot,cx,y,cw,LH+.4);pos(hx,y);on=1;
+    }else{
+      r(done,40,T-1,320,B-T+1);r(cur,0,0,0,0);r(hot,0,0,0,0);
+      var sx=(N-1)%2===0?X1:X0;
+      if(t<APP+PRINT+PARK){var k2=ease((t-APP-PRINT)/PARK);pos(sx+(PX-sx)*k2,T+(PY-T)*k2)}
+      else{pos(PX,PY);if(t>CYC-FADE)op=1-(t-(CYC-FADE))/FADE}
+    }
+    word.setAttribute('opacity',op.toFixed(3));tip.setAttribute('opacity',on);
+  }
+  var el=-500,last=0,raf=0,vis=true;
+  frame(0);
+  function loop(now){var dt=last?Math.min(now-last,50):16;last=now;el+=dt;frame(el<0?0:el%CYC);raf=requestAnimationFrame(loop)}
+  function play(){if(!raf){last=0;raf=requestAnimationFrame(loop)}}
+  function stop(){if(raf){cancelAnimationFrame(raf);raf=0}}
+  new IntersectionObserver(function(es){vis=es[0].isIntersecting;vis&&!document.hidden?play():stop()}).observe(svg);
+  document.addEventListener('visibilitychange',function(){!document.hidden&&vis?play():stop()});
+})();
+
+/* Scroll: piezas del taller línea a línea + línea del proceso */
+var pieces=$('.tw').map(function(sv){return{el:sv,paths:$('path',sv)}});
+var steps=$('.diagram-step');
+function count(n){var num=n.querySelector('.num');if(!num)return;var to=parseInt(num.textContent,10),k=0;num.textContent='00';var id=setInterval(function(){k++;num.textContent=(k<10?'0':'')+k;if(k>=to)clearInterval(id)},90)}
+var ticking=false;
+function update(){
+  ticking=false;var vh=innerHeight;
+  pieces.forEach(function(p){
+    var top=p.el.getBoundingClientRect().top,pr=clamp((vh*.95-top)/(vh*.5)),n=p.paths.length;
+    p.paths.forEach(function(path,k){path.style.strokeDashoffset=(1-clamp(pr*n-k)).toFixed(3)});
+  });
+  var trig=vh*.62;
+  steps.forEach(function(s){
+    var b=s.getBoundingClientRect(),icon=s.querySelector('.diagram-icon').getBoundingClientRect();
+    if(icon.top<trig&&!s.classList.contains('lit')){s.classList.add('lit');count(s)}
+    var start=icon.bottom,len=b.bottom-icon.bottom;
+    s.style.setProperty('--p',clamp((trig-start)/(len||1)).toFixed(3));
+  });
+}
+function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(update)}}
+addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll,{passive:true});update();
+
+/* Preguntas: abrir y cerrar con altura animada */
+$('.faq-list details').forEach(function(d){
+  var s=d.querySelector('summary');
+  s.addEventListener('click',function(e){
+    if(!d.animate)return;
+    e.preventDefault();
+    var opening=d._closing?true:!d.open,from=d.offsetHeight;
+    if(d._a)d._a.cancel();
+    d.classList.add('turn');
+    if(opening)d.open=true;
+    var to=opening?d.offsetHeight:s.offsetHeight+(d.offsetHeight-d.clientHeight);
+    d.style.overflow='hidden';d._closing=!opening;
+    var a=d.animate({height:[from+'px',to+'px']},{duration:360,easing:'cubic-bezier(.2,.7,.2,1)'});
+    d._a=a;
+    a.onfinish=function(){if(!opening)d.open=false;d.style.overflow='';d._a=null;d._closing=false};
+    a.oncancel=function(){d.style.overflow='';d._a=null};
+  });
+});
+})();
+</script></body></html>
