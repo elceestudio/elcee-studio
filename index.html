@@ -142,6 +142,10 @@ html.menu-open .hd{color:var(--crema)!important}
 .hd-tab-new{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--rojo);
   margin-left:8px;vertical-align:middle;animation:tabDot 2.6s var(--ease) infinite}
 @keyframes tabDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.45}}
+.hd-tab-arxhia{display:inline-flex;align-items:center;flex:none}
+@media(max-width:480px){.hd:has(.hd-tab-arxhia) .burger-lbl{display:none}.hd-tab-arxhia svg{height:9px}}
+.hd-tab-arxhia svg{height:12px;width:auto;display:block}
+@media(max-width:760px){.hd-tab-arxhia svg{height:10px}}
 html.prm .hd-tab-new{animation:none}
 @media(max-width:760px){
   /* en pantallas angostas el encabezado solo muestra el otro lado del sitio */
@@ -535,10 +539,10 @@ html.prm .flow .dot{transform:scale(1)}
 
 /* ---------- Paneles con foto ---------- */
 .plano{padding:0;overflow:hidden}
-.plano img{width:100%;height:auto;display:block}
+.plano img,.plano video{width:100%;height:auto;display:block}
 .plano-chip,.plano-chip2{background:rgba(10,10,10,.74);padding:6px 10px}
 .fol{padding:0;overflow:hidden}
-.fol img{width:100%;height:100%;object-fit:cover;display:block}
+.fol img,.fol video{width:100%;height:100%;object-fit:cover;display:block}
 .fol-chip{background:rgba(10,10,10,.74);padding:6px 10px;z-index:2}
 .tag-link{border-color:var(--rojo);color:var(--rojo)}
 .tag-link:hover{background:var(--rojo);color:var(--crema)}
@@ -562,15 +566,15 @@ html.prm .gal{overflow-x:auto}
    ============================================================ */
 /* Expo de portada (exhibición del sitio anterior, fusionada) */
 .hero-expo{position:absolute;inset:0;z-index:0;overflow:hidden;background:var(--negro)}
-.hero-expo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;
+.hero-expo img,.hero-expo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;
   transform:scale(1.07);transition:opacity 1.15s var(--ease),transform 5.4s linear;
   filter:grayscale(.18) contrast(1.03)}
-.hero-expo img.on{opacity:1;transform:scale(1)}
+.hero-expo img.on,.hero-expo video.on{opacity:1;transform:scale(1)}
 .hero-expo::after{content:"";position:absolute;inset:0;background:
   linear-gradient(90deg,rgba(10,10,10,.95) 0%,rgba(10,10,10,.74) 42%,rgba(10,10,10,.24) 100%),
   linear-gradient(0deg,rgba(10,10,10,.9) 0%,rgba(10,10,10,0) 32%),
   linear-gradient(180deg,rgba(10,10,10,.62) 0%,rgba(10,10,10,0) 24%)}
-html.prm .hero-expo img{transition:none;transform:none}
+html.prm .hero-expo img,html.prm .hero-expo video{transition:none;transform:none}
 .hx-link{display:flex;flex-direction:column;align-items:flex-end;gap:5px;text-decoration:none;text-align:right}
 .hx-link .hx-n{font-size:9px;letter-spacing:.3em;font-weight:700;color:var(--mut-d)}
 .hx-link .hx-t{font-size:12px;letter-spacing:.24em;font-weight:700;color:var(--crema);transition:color .3s}
@@ -679,6 +683,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
       <span class="hd-tab-sep" aria-hidden="true"></span>
       <a class="hd-tab" href="taller.html">TALLER<span class="hd-tab-new" aria-hidden="true"></span></a>
       <a class="hd-tab" href="e3l.html" aria-label="E3L / 3D LAB">E3L<span class="e3l-long"> / 3D LAB</span></a>
+      <a class="hd-tab hd-tab-arxhia" href="https://arxhia.com" target="_blank" rel="noopener" aria-label="ARXH.IA — tu render en segundos"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="40 40 647 93"><path fill="currentColor" d="M40 40H133.0V133.0H105.10000000000001V121.84H121.84V51.16H51.16V121.84H67.9V133.0H40Z"/><path fill="currentColor" d="M80.92 80.92H92.08V92.08H80.92Z"/><path fill="currentColor" d="M201.1483439207077 134.8Q195.89446741789578 134.8 190.69627202302217 133.82056821063162Q185.49807662814857 132.84113642126323 181.23274091109636 130.39418296441437Q176.96740519404412 127.9472295075655 174.4348883353174 123.48988430872559Q171.90237147659064 119.03253910988569 171.90237147659064 112.07723465114832Q171.90237147659064 103.2296043381095 176.28833847790958 97.85529835820199Q180.6743054792285 92.48099237829447 188.68646660968662 89.72397842258215Q196.69862774014473 86.96696446686983 207.62104468494653 86.01647364348173Q218.54346162974835 85.06598282009364 231.49245404601095 85.06598282009364V80.3121360823512Q231.49245404601095 76.1207862868905 229.75039166510103 73.32923838496208Q228.00832928419112 70.53769048303366 224.14791019782422 69.1366916693747Q220.28749111145734 67.73569285571575 213.60281245857476 67.73569285571575Q207.76280899792908 67.73569285571575 203.74729563891887 68.82012520208954Q199.73178227990866 69.90455754846334 197.7160694129765 71.74655266031623Q195.70035654604436 73.58854777216911 195.70035654604436 76.0099352553487V77.84800237268209H175.4676630705595Q175.3176630705595 77.17678375542164 175.28479551151395 76.52174237892032Q175.2519279524684 75.866701002419 175.2519279524684 74.98731003254653Q175.2519279524684 68.06617864221334 179.87087758779526 62.935915503650904Q184.48982722312212 57.80565236508846 193.21824125126005 55.00691235885024Q201.94665527939796 52.208172352612024 214.33139064759015 52.208172352612024Q226.72525686323644 52.208172352612024 235.09198342338203 54.96817486807704Q243.45870998352765 57.72817738354206 247.73201855123042 63.41930172815919Q252.0053271189332 69.11042607277632 252.0053271189332 78.06527583152055V113.28053766638041Q252.0053271189332 116.0913988724351 253.386115411669 117.46853103488684Q254.76690370440483 118.84566319733858 257.15045320689677 118.84566319733858H263.37058260142805V132.28207982331514Q261.8069183588028 132.92121861726045 258.309178058058 133.825Q254.81143775731323 134.72878138273956 250.2248189508915 134.72878138273956Q244.87127178907394 134.72878138273956 241.38434399366378 133.2865737915039Q237.8974161982536 131.84436620026827 235.97191189676522 129.253945158422Q234.04640759527683 126.66352411657572 233.2585696145892 123.33014348000287H232.20779116153716Q228.8324241861701 126.79525044560432 224.18624917939306 129.42128079608082Q219.54007417261602 132.04731114655732 213.7661574162543 133.42365557327867Q207.99224065989256 134.8 201.1483439207077 134.8ZM206.98750687986612 119.01421991735697Q211.45042039602995 119.01421991735697 215.80492593720555 117.8538759842515Q220.15943147838115 116.69353205114604 223.6997630029917 114.54580154269934Q227.2400945276022 112.39807103425264 229.36627428680657 109.22695541530848Q231.49245404601095 106.05583979636431 231.49245404601095 102.09925308972598V98.10321960449218Q219.26803259402513 98.10321960449218 210.53593191206454 99.20904871672391Q201.80383123010398 100.31487782895564 197.20697288736702 103.04695765227079Q192.61011454463005 105.77903747558594 192.61011454463005 110.70813522189856Q192.61011454463005 113.69090627133846 194.51195488497615 115.50955988615752Q196.41379522532225 117.32821350097656 199.6982326619327 118.17121670916677Q202.98267009854317 119.01421991735697 206.98750687986612 119.01421991735697ZM273.87917938530444 133.0V54.00817235261202H290.6855946838856L292.2372573822737 67.11395645290614H293.3655164048076Q295.00796203017234 63.07021001428366 297.72922057509425 59.68113339915872Q300.4504791200161 56.292056784033775 304.53646049126985 54.24359143599868Q308.62244186252354 52.19512608796359 313.99971084743737 52.19512608796359Q316.59589004665617 52.19512608796359 318.93210106119517 52.61904284134508Q321.2683120757342 53.04295959472657 322.8473393768072 53.6562619522214V71.9728164702654H314.5973503157497Q309.3489499405027 71.9728164702654 305.53531544804576 73.58275401294232Q301.72168095558885 75.19269155561923 299.2435592621565 78.20179774910211Q296.76543756872417 81.21090394258499 295.57874501347544 85.24184762313962Q294.3920524582267 89.27279130369425 294.3920524582267 94.11558203250169V133.0ZM326.1031926482916 133.0 358.9376571685076 92.03537826389075 328.30729649811985 54.00817235261202H353.7829561755061L372.6561185196042 78.37095312029123H373.60202306061984L392.4861524030566 54.00817235261202H416.3963246643543L385.6493446305394 92.01842397153378L418.20414352267983 133.0H392.96274872720244L372.00966466218233 105.69589537978172H371.0637601211667L350.09214629232883 133.0ZM428.2291793853044 133.0V24.458172352612024H448.7420524582267V63.83506927788258H449.79831441044803Q453.1340202316642 59.85815378725529 457.44955215603113 57.30399246066809Q461.7650840803981 54.74983113408089 466.79292742982506 53.47900174334646Q471.82077077925203 52.208172352612024 477.1795425444841 52.208172352612024Q486.52697805464265 52.208172352612024 493.12630030959843 55.321126303076746Q499.7256225645542 58.43408025354147 503.2374380789697 64.99024480432271Q506.7492535933852 71.54640935510398 506.7492535933852 82.01377843171358V133.0H486.1651619032025V85.49012705385685Q486.1651619032025 81.01417744755744 485.009656149894 77.94442341923714Q483.85415039658545 74.87466939091684 481.6841351881623 72.98611513599754Q479.5141199797392 71.09756088107824 476.421024454385 70.26277872622013Q473.32792892903086 69.42799657136203 469.51092173755166 69.42799657136203Q463.8733240813017 69.42799657136203 459.1575152114034 71.91954447329044Q454.44170634150504 74.41109237521887 451.5918793998659 78.79392699897289Q448.7420524582267 83.17676162272693 448.7420524582267 89.00114414840937V133.0Z"/><rect x="523.75" y="113.50" width="19.50" height="19.50" fill="currentColor"/><path fill="currentColor" d="M559.3291793853044 41.777375790476796V24.458172352612024H579.8420524582267V41.777375790476796ZM559.3291793853044 133.0V54.00817235261202H579.8420524582267V133.0ZM625.0483439207077 134.8Q619.7944674178958 134.8 614.5962720230222 133.82056821063162Q609.3980766281485 132.84113642126323 605.1327409110963 130.39418296441437Q600.8674051940441 127.9472295075655 598.3348883353174 123.48988430872559Q595.8023714765906 119.03253910988569 595.8023714765906 112.07723465114832Q595.8023714765906 103.2296043381095 600.1883384779095 97.85529835820199Q604.5743054792284 92.48099237829447 612.5864666096866 89.72397842258215Q620.5986277401447 86.96696446686983 631.5210446849464 86.01647364348173Q642.4434616297483 85.06598282009364 655.3924540460109 85.06598282009364V80.3121360823512Q655.3924540460109 76.1207862868905 653.6503916651011 73.32923838496208Q651.9083292841912 70.53769048303366 648.0479101978242 69.1366916693747Q644.1874911114573 67.73569285571575 637.5028124585748 67.73569285571575Q631.6628089979291 67.73569285571575 627.6472956389189 68.82012520208954Q623.6317822799086 69.90455754846334 621.6160694129765 71.74655266031623Q619.6003565460443 73.58854777216911 619.6003565460443 76.0099352553487V77.84800237268209H599.3676630705595Q599.2176630705595 77.17678375542164 599.1847955115139 76.52174237892032Q599.1519279524683 75.866701002419 599.1519279524683 74.98731003254653Q599.1519279524683 68.06617864221334 603.7708775877952 62.935915503650904Q608.3898272231221 57.80565236508846 617.1182412512601 55.00691235885024Q625.846655279398 52.208172352612024 638.2313906475902 52.208172352612024Q650.6252568632364 52.208172352612024 658.991983423382 54.96817486807704Q667.3587099835277 57.72817738354206 671.6320185512304 63.41930172815919Q675.9053271189332 69.11042607277632 675.9053271189332 78.06527583152055V113.28053766638041Q675.9053271189332 116.0913988724351 677.286115411669 117.46853103488684Q678.6669037044048 118.84566319733858 681.0504532068968 118.84566319733858H687.270582601428V132.28207982331514Q685.7069183588028 132.92121861726045 682.209178058058 133.825Q678.7114377573132 134.72878138273956 674.1248189508915 134.72878138273956Q668.7712717890739 134.72878138273956 665.2843439936637 133.2865737915039Q661.7974161982536 131.84436620026827 659.8719118967651 129.253945158422Q657.9464075952768 126.66352411657572 657.1585696145892 123.33014348000287H656.1077911615372Q652.7324241861701 126.79525044560432 648.086249179393 129.42128079608082Q643.4400741726159 132.04731114655732 637.6661574162542 133.42365557327867Q631.8922406598925 134.8 625.0483439207077 134.8ZM630.8875068798661 119.01421991735697Q635.3504203960299 119.01421991735697 639.7049259372055 117.8538759842515Q644.0594314783812 116.69353205114604 647.5997630029917 114.54580154269934Q651.1400945276022 112.39807103425264 653.2662742868065 109.22695541530848Q655.3924540460109 106.05583979636431 655.3924540460109 102.09925308972598V98.10321960449218Q643.1680325940251 98.10321960449218 634.4359319120645 99.20904871672391Q625.7038312301039 100.31487782895564 621.106972887367 103.04695765227079Q616.51011454463 105.77903747558594 616.51011454463 110.70813522189856Q616.51011454463 113.69090627133846 618.4119548849761 115.50955988615752Q620.3137952253222 117.32821350097656 623.5982326619327 118.17121670916677Q626.8826700985431 119.01421991735697 630.8875068798661 119.01421991735697Z"/></svg></a>
     </nav>
   </div>
   <div class="hd-right">
@@ -715,12 +720,12 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
 <!-- ============ HERO ============ -->
 <section class="hero" id="inicio" data-theme="dark">
   <div class="hero-expo">
-    <img src="img/verdal-tower.webp" alt="Verdal Tower" fetchpriority="high" decoding="async" data-proj="0" data-chip="VERDAL TOWER">
+    <video src="img/casa-mv.mp4" poster="img/casa-mv-poster.webp" aria-label="Casa MV" muted loop playsinline preload="auto" data-proj="5" data-chip="CASA MV"></video>
+    <img data-src="img/verdal-tower.webp" alt="Verdal Tower" decoding="async" data-proj="0" data-chip="VERDAL TOWER">
     <img data-src="img/proyecto-petalo.webp" alt="Proyecto Pétalo" decoding="async" data-proj="1" data-chip="PROYECTO PÉTALO">
     <img data-src="img/biblioteca-madero.webp" alt="Biblioteca Madero" decoding="async" data-proj="2" data-chip="BIBLIOTECA MADERO">
     <img data-src="img/cfa-terrace.webp" alt="CFA Terrace" decoding="async" data-proj="3" data-chip="CFA TERRACE">
     <img data-src="img/casa-iii-picos.webp" alt="Casa III Picos" decoding="async" data-proj="4" data-chip="CASA III PICOS">
-    <img data-src="img/casa-mv.webp" alt="Casa MV" decoding="async" data-proj="5" data-chip="CASA MV">
   </div>
   <div class="hero-grid" aria-hidden="true"></div>
   <svg class="hero-mark" viewBox="0 0 200 200" aria-hidden="true">
@@ -761,7 +766,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
     <div class="hero-meta">
       <a class="hx-link" id="hxLink" href="#proyectos" aria-label="Ver el proyecto en portada">
         <span class="hx-n" id="hxN">01 / 06 — EN PORTADA</span>
-        <span class="hx-t" id="hxT">VERDAL TOWER</span>
+        <span class="hx-t" id="hxT">CASA MV</span>
         <span class="hx-go">VER PROYECTO ↗</span>
       </a>
       <span class="hero-clock" id="clock">AGS · 00:00</span>
@@ -846,7 +851,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
 
 <!-- ============ GALERÍA ============ -->
 <div class="sec-light gal" data-theme="light" aria-label="Galería de obra">
-  <div class="gal-row gal-a"><figure class="gitem"><img src="img/verdal-tower.webp" alt="Verdal Tower" loading="lazy" decoding="async"><span class="glabel">VERDAL TOWER</span></figure><figure class="gitem"><img src="img/proyecto-petalo.webp" alt="Proyecto Pétalo" loading="lazy" decoding="async"><span class="glabel">PROYECTO PÉTALO</span></figure><figure class="gitem"><img src="img/biblioteca-madero.webp" alt="Biblioteca Madero" loading="lazy" decoding="async"><span class="glabel">BIBLIOTECA MADERO</span></figure><figure class="gitem"><img src="img/verdal-tower-interior.webp" alt="Verdal · Interior" loading="lazy" decoding="async"><span class="glabel">VERDAL · INTERIOR</span></figure><figure class="gitem"><img src="img/casa-iii-picos.webp" alt="Casa Iii Picos" loading="lazy" decoding="async"><span class="glabel">CASA III PICOS</span></figure><figure class="gitem"><img src="img/biblioteca-madero-2.webp" alt="Biblioteca Madero" loading="lazy" decoding="async"><span class="glabel">BIBLIOTECA MADERO</span></figure><figure class="gitem"><img src="img/casa-mv.webp" alt="Casa Mv" loading="lazy" decoding="async"><span class="glabel">CASA MV</span></figure><figure class="gitem"><img src="img/verdal-tower.webp" alt="Verdal Tower" loading="lazy" decoding="async"><span class="glabel">VERDAL TOWER</span></figure><figure class="gitem"><img src="img/proyecto-petalo.webp" alt="Proyecto Pétalo" loading="lazy" decoding="async"><span class="glabel">PROYECTO PÉTALO</span></figure><figure class="gitem"><img src="img/biblioteca-madero.webp" alt="Biblioteca Madero" loading="lazy" decoding="async"><span class="glabel">BIBLIOTECA MADERO</span></figure><figure class="gitem"><img src="img/verdal-tower-interior.webp" alt="Verdal · Interior" loading="lazy" decoding="async"><span class="glabel">VERDAL · INTERIOR</span></figure><figure class="gitem"><img src="img/casa-iii-picos.webp" alt="Casa Iii Picos" loading="lazy" decoding="async"><span class="glabel">CASA III PICOS</span></figure><figure class="gitem"><img src="img/biblioteca-madero-2.webp" alt="Biblioteca Madero" loading="lazy" decoding="async"><span class="glabel">BIBLIOTECA MADERO</span></figure><figure class="gitem"><img src="img/casa-mv.webp" alt="Casa Mv" loading="lazy" decoding="async"><span class="glabel">CASA MV</span></figure></div>
+  <div class="gal-row gal-a"><figure class="gitem"><img src="img/verdal-tower.webp" alt="Verdal Tower" loading="lazy" decoding="async"><span class="glabel">VERDAL TOWER</span></figure><figure class="gitem"><img src="img/proyecto-petalo.webp" alt="Proyecto Pétalo" loading="lazy" decoding="async"><span class="glabel">PROYECTO PÉTALO</span></figure><figure class="gitem"><img src="img/biblioteca-madero.webp" alt="Biblioteca Madero" loading="lazy" decoding="async"><span class="glabel">BIBLIOTECA MADERO</span></figure><figure class="gitem"><img src="img/verdal-tower-interior.webp" alt="Verdal · Interior" loading="lazy" decoding="async"><span class="glabel">VERDAL · INTERIOR</span></figure><figure class="gitem"><img src="img/casa-iii-picos.webp" alt="Casa Iii Picos" loading="lazy" decoding="async"><span class="glabel">CASA III PICOS</span></figure><figure class="gitem"><img src="img/biblioteca-madero-2.webp" alt="Biblioteca Madero" loading="lazy" decoding="async"><span class="glabel">BIBLIOTECA MADERO</span></figure><figure class="gitem"><img src="img/verdal-tower.webp" alt="Verdal Tower" loading="lazy" decoding="async"><span class="glabel">VERDAL TOWER</span></figure><figure class="gitem"><img src="img/proyecto-petalo.webp" alt="Proyecto Pétalo" loading="lazy" decoding="async"><span class="glabel">PROYECTO PÉTALO</span></figure><figure class="gitem"><img src="img/biblioteca-madero.webp" alt="Biblioteca Madero" loading="lazy" decoding="async"><span class="glabel">BIBLIOTECA MADERO</span></figure><figure class="gitem"><img src="img/verdal-tower-interior.webp" alt="Verdal · Interior" loading="lazy" decoding="async"><span class="glabel">VERDAL · INTERIOR</span></figure><figure class="gitem"><img src="img/casa-iii-picos.webp" alt="Casa Iii Picos" loading="lazy" decoding="async"><span class="glabel">CASA III PICOS</span></figure><figure class="gitem"><img src="img/biblioteca-madero-2.webp" alt="Biblioteca Madero" loading="lazy" decoding="async"><span class="glabel">BIBLIOTECA MADERO</span></figure></div>
   <div class="gal-row gal-b"><figure class="gitem"><img src="img/cfa-terrace.webp" alt="Cfa Terrace" loading="lazy" decoding="async"><span class="glabel">CFA TERRACE</span></figure><figure class="gitem"><img src="img/verdal-library.webp" alt="Verdal · Library" loading="lazy" decoding="async"><span class="glabel">VERDAL · LIBRARY</span></figure><figure class="gitem"><img src="img/proyecto-petalo-2.webp" alt="Pétalo · Conjunto" loading="lazy" decoding="async"><span class="glabel">PÉTALO · CONJUNTO</span></figure><figure class="gitem"><img src="img/biblioteca-exoskeleton.webp" alt="Exoesqueleto" loading="lazy" decoding="async"><span class="glabel">EXOESQUELETO</span></figure><figure class="gitem"><img src="img/verdal-bath.webp" alt="Verdal · Baño" loading="lazy" decoding="async"><span class="glabel">VERDAL · BAÑO</span></figure><figure class="gitem"><img src="img/cfa-corridor.webp" alt="Cfa · Corredor" loading="lazy" decoding="async"><span class="glabel">CFA · CORREDOR</span></figure><figure class="gitem"><img src="img/casa-iii-picos-interior.webp" alt="Iii Picos · Interior" loading="lazy" decoding="async"><span class="glabel">III PICOS · INTERIOR</span></figure><figure class="gitem"><img src="img/verdal-boutique.webp" alt="Verdal · Boutique" loading="lazy" decoding="async"><span class="glabel">VERDAL · BOUTIQUE</span></figure><figure class="gitem"><img src="img/cfa-before.webp" alt="Cfa · Antes" loading="lazy" decoding="async"><span class="glabel">CFA · ANTES</span></figure><figure class="gitem"><img src="img/cfa-terrace.webp" alt="Cfa Terrace" loading="lazy" decoding="async"><span class="glabel">CFA TERRACE</span></figure><figure class="gitem"><img src="img/verdal-library.webp" alt="Verdal · Library" loading="lazy" decoding="async"><span class="glabel">VERDAL · LIBRARY</span></figure><figure class="gitem"><img src="img/proyecto-petalo-2.webp" alt="Pétalo · Conjunto" loading="lazy" decoding="async"><span class="glabel">PÉTALO · CONJUNTO</span></figure><figure class="gitem"><img src="img/biblioteca-exoskeleton.webp" alt="Exoesqueleto" loading="lazy" decoding="async"><span class="glabel">EXOESQUELETO</span></figure><figure class="gitem"><img src="img/verdal-bath.webp" alt="Verdal · Baño" loading="lazy" decoding="async"><span class="glabel">VERDAL · BAÑO</span></figure><figure class="gitem"><img src="img/cfa-corridor.webp" alt="Cfa · Corredor" loading="lazy" decoding="async"><span class="glabel">CFA · CORREDOR</span></figure><figure class="gitem"><img src="img/casa-iii-picos-interior.webp" alt="Iii Picos · Interior" loading="lazy" decoding="async"><span class="glabel">III PICOS · INTERIOR</span></figure><figure class="gitem"><img src="img/verdal-boutique.webp" alt="Verdal · Boutique" loading="lazy" decoding="async"><span class="glabel">VERDAL · BOUTIQUE</span></figure><figure class="gitem"><img src="img/cfa-before.webp" alt="Cfa · Antes" loading="lazy" decoding="async"><span class="glabel">CFA · ANTES</span></figure></div>
 </div>
 
@@ -1062,7 +1067,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
         </div></div>
       </div>
     </article>
-    <article class="proj" data-img="img/casa-mv.webp" data-chip="CASA MV">
+    <article class="proj" data-img="img/casa-mv.mp4" data-chip="CASA MV">
       <button class="proj-head" aria-expanded="false">
         <span class="p-num">06</span>
         <span class="p-name dsp" role="heading" aria-level="3">Casa MV</span>
@@ -1078,7 +1083,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
             <div class="proj-dl"><div class="row"><span class="k">Ubicación</span><span class="v">Monterrey, MX</span></div><div class="row"><span class="k">Programa</span><span class="v">Vivienda unifamiliar</span></div><div class="row"><span class="k">Herramientas</span><span class="v">Revit · D5</span></div><div class="row"><span class="k">Crédito</span><span class="v">Académico · UDEM</span></div></div>
             <div class="proj-tags"><span class="tag">+ Residencial</span><span class="tag">+ Académico</span></div>
           </div>
-          <figure class="plano"><span class="plano-chip">CASA MV</span><img src="img/casa-mv.webp" alt="Casa MV" loading="lazy" decoding="async"><span class="plano-chip2">RENDER · FACHADA</span></figure>
+          <figure class="plano"><span class="plano-chip">CASA MV</span><video src="img/casa-mv.mp4" poster="img/casa-mv-poster.webp" aria-label="Casa MV" muted loop autoplay playsinline preload="metadata"></video><span class="plano-chip2">VIDEO · FACHADA</span></figure>
         </div></div>
       </div>
     </article>
@@ -1446,6 +1451,7 @@ html.prm .metodo-stage{min-height:0;padding:90px 0 60px}
 <div class="fol" aria-hidden="true">
   <span class="fol-chip" id="folChip">PRJ</span>
   <img id="folImg" alt="">
+  <video id="folVid" muted loop playsinline preload="metadata" style="display:none"></video>
 </div>
 
 <script>/* GSAP 3.12.5 — embebido */
@@ -1675,13 +1681,21 @@ if (FINE && !REDUCED && hasGsap){
 
 /* ---------- Follower de proyectos ---------- */
 if (FINE && !REDUCED){
-  const fol=q('.fol'), fimg=q('#folImg'), chip=q('#folChip');
+  const fol=q('.fol'), fimg=q('#folImg'), fvid=q('#folVid'), chip=q('#folChip');
   let mx=0,my=0,fx=0,fy=0,active=false,cs=.9,co=0;
   addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
   qa('.proj').forEach(p=>{
     p.addEventListener('mouseenter',()=>{
       if (p.classList.contains('open')) return;
-      if (fimg.getAttribute('src') !== p.dataset.img) fimg.src = p.dataset.img;
+      const src = p.dataset.img;
+      if (/\.mp4$/i.test(src)){
+        if (fvid.getAttribute('src') !== src) fvid.src = src;
+        fvid.style.display = 'block'; fimg.style.display = 'none';
+        const pv = fvid.play(); if (pv && pv.catch) pv.catch(()=>{});
+      } else {
+        if (fimg.getAttribute('src') !== src) fimg.src = src;
+        fimg.style.display = 'block'; fvid.style.display = 'none'; fvid.pause();
+      }
       chip.textContent = p.dataset.chip;
       active = true;
     });
@@ -1737,25 +1751,39 @@ qa('[data-goproj]').forEach(el=>{
 /* ---------- REV.03: expo de portada (exhibición) ---------- */
 const expo = q('.hero-expo');
 if (expo){
-  const slides = Array.from(expo.querySelectorAll('img'));
+  const slides = Array.from(expo.querySelectorAll('img, video'));
   const hxN = q('#hxN'), hxT = q('#hxT'), hxLink = q('#hxLink');
   let cur = 0;
   const feed = s => { if (s.dataset.src){ s.src = s.dataset.src; s.removeAttribute('data-src'); } };
   const show = i => {
-    slides[cur].classList.remove('on');
+    const prev = slides[cur];
+    prev.classList.remove('on');
+    if (prev.tagName === 'VIDEO') prev.pause();
     cur = i % slides.length;
     const s = slides[cur];
     feed(s);
     s.classList.add('on');
+    if (s.tagName === 'VIDEO'){ s.currentTime = 0; const pr = s.play(); if (pr && pr.catch) pr.catch(()=>{}); }
     if (hxN) hxN.textContent = String(cur+1).padStart(2,'0') + ' / ' + String(slides.length).padStart(2,'0') + ' — EN PORTADA';
     if (hxT) hxT.textContent = s.dataset.chip || '';
     if (!REDUCED && hasGsap && hxT) gsap.fromTo([hxT,hxN],{y:9,opacity:0},{y:0,opacity:1,duration:.55,stagger:.06,ease:'power3.out',overwrite:true});
   };
   slides[0].classList.add('on');
+  if (!REDUCED && slides[0].tagName === 'VIDEO'){ const p0 = slides[0].play(); if (p0 && p0.catch) p0.catch(()=>{}); }
   if (hxLink) hxLink.addEventListener('click', e=>{ e.preventDefault(); goProject(+slides[cur].dataset.proj); });
   if (!REDUCED){
     addEventListener('load', ()=>slides.forEach(feed), {once:true});
-    setInterval(()=>show(cur+1), 4600);
+    let timer;
+    const dwell = () => {
+      const s = slides[cur];
+      const d = s && s.tagName === 'VIDEO' ? s.duration : NaN;
+      return (d && isFinite(d)) ? Math.max(d*1000, 4600) : 4600;
+    };
+    const tick = () => { show(cur+1); timer = setTimeout(tick, dwell()); };
+    timer = setTimeout(tick, dwell());
+    qa('.hero-expo video').forEach(v=>v.addEventListener('loadedmetadata', ()=>{
+      if (slides[cur] === v){ clearTimeout(timer); timer = setTimeout(tick, dwell()); }
+    }));
   }
 }
 
